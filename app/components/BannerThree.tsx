@@ -4,7 +4,7 @@ export default function BannerOne() {
       <h1 className="mb-4 text-4xl font-extrabold">
         It’s “you’ll never go back” better
       </h1>
-      <h3 className="mb-4 text-xl">
+      <h3 className="text-xl">
         Bytehopper replaces unreliable freelancers and expensive agencies for
         one flat monthly fee, with code delivered so fast that it will blow your
         mind.

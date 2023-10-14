@@ -9,7 +9,7 @@ export default function MembershipLevels() {
         Get a guided tour through Bytehopper.AI, and find out how you and your
         team can change the way you source development, forever.
       </h1>
-      <div className="mb-4">
+      <div className="">
         <a
           className="border-2 text-xl p-2 border-black"
           href=""

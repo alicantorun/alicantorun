@@ -6,7 +6,7 @@ export default function BannerOne() {
         Perks so good you'll never need to go anywhere else for your design.
         Seriously.
       </h3>
-      <div className="mb-4">
+      <div className="">
         <a
           className="border-2 text-xl p-2 border-black"
           href=""

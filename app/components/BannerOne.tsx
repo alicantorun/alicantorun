@@ -4,7 +4,7 @@ export default function BannerOne() {
       <h1 className="mb-4 text-4xl font-extrabold">
         We didn't reinvent the wheel, just develop
       </h1>
-      <h3 className="mb-4 text-xl">
+      <h3 className="text-xl">
         Develop as you know it is out the door. Develop as you want it just
         arrived.
       </h3>

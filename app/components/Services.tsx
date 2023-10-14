@@ -4,7 +4,7 @@ export default function BannerOne() {
       <h1 className="mb-4 text-4xl font-extrabold">
         Websites, mobile apps, llms, chatbots & more.
       </h1>
-      <h3 className="mb-4 text-xl">
+      <h3 className="text-xl">
         Websites <br />
         Mobile apps <br />
         LLMs <br />
