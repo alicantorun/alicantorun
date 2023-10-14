@@ -41,7 +41,7 @@ export default function AccordionItem({
       </div>
       <div
         className={`overflow-hidden transition-max-height duration-500 ${
-          isOpen ? "max-h-64" : "max-h-0"
+          isOpen ? "max-h-96" : "max-h-0"
         }`}
       >
         <div className="p-4">
