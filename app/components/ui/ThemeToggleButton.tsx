@@ -1,5 +1,3 @@
-"use client";
-
 import React, { useEffect, useState } from "react";
 import styles from "./ThemeToggleButton.module.css"; // Import styles if you have defined them
 import { useTheme } from "next-themes";

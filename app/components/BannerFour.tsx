@@ -1,6 +1,6 @@
 export default function BannerTwo() {
   return (
-    <div className="text-center max-w-5xl w-full items-center justify-between font-mono mb-12 lg:mb-24">
+    <div className="text-center max-w-5xl w-full items-center justify-between   mb-12 lg:mb-24">
       <div className="flex flex-col lg:flex-row mb-8">
         <div className="p-4 flex-1">
           <h3 className="mb-4 font-extrabold text-2xl">Feature board</h3>

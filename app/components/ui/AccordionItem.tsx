@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { Fragment, useState } from "react";
 
 export default function AccordionItem({
   title,
@@ -46,10 +46,10 @@ export default function AccordionItem({
       >
         <div className="p-4">
           {content.map((item, index) => (
-            <>
+            <Fragment key={index}>
               <p className="text-left">{item}</p>
               {index < content.length - 1 && <br />}
-            </>
+            </Fragment>
           ))}
         </div>
       </div>

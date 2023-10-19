@@ -1,6 +1,6 @@
 export default function BannerOne() {
   return (
-    <div className="text-center max-w-5xl w-full items-center justify-between font-mono mb-12 lg:mb-24">
+    <div className="text-center max-w-5xl w-full items-center justify-between   mb-12 lg:mb-24">
       <div className="flex flex-col lg:flex-row">
         <div className="p-4 flex-1 border-black dark:border-white border-2 flex-col justify-center">
           <h3 className="mb-4 text-left text-8xl h-8">”</h3>

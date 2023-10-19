@@ -14,7 +14,7 @@ import Footer from "./components/Footer";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center p-6 lg:p-24 transition-colors duration-500  dark:bg-black dark:text-white">
+    <main className="flex min-h-screen flex-col items-center lg:pt-6 p-6 lg:p-24 transition-colors duration-500  dark:bg-black dark:text-white">
       <Header />
       <Hero />
       <BannerOne />
