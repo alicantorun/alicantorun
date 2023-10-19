@@ -1,4 +1,5 @@
 import ThemeToggleButton from "@/app/components/ui/ThemeToggleButton";
+import { HamburgerMenu } from "@/app/components/ui/HamburgerMenu";
 
 export default function Header() {
   return (
@@ -23,6 +24,7 @@ export default function Header() {
           Contact us
         </a>
         <ThemeToggleButton />
+        <HamburgerMenu />
       </div>
     </div>
   );
