@@ -35,16 +35,16 @@ export default function Header() {
           </a>
           <ThemeToggleButton />
         </div>
-        <div className="lg:hidden z-50">
+        <div className="lg:hidden">
           <HamburgerMenu onClick={handleSetIsOpen} isOpen={isOpen} />
         </div>
       </div>
       <div
-        className={`absolute top-24 w-full left-0 transform transition-transform duration-300 ease-in-out overflow-hidden  ${
-          isOpen ? "translate-y-0 max-h-[300px]" : "-translate-y-full max-h-0"
+        className={`absolute top-24 w-full left-0 transform transition-transform duration-500 ease-in-out overflow-hidden ${
+          isOpen ? "translate-y-0 max-h-[300px]" : "translate-y-[-150%]"
         }`}
       >
-        <div className="dark:bg-black bg-white justify-center items-center flex flex-col opacity-90 pb-4 transition-colors duration-500">
+        <div className="mb-4 dark:bg-black bg-white justify-center items-center flex flex-col opacity-90 transition-colors duration-500">
           <a className="mb-4" href="" target="_blank" rel="noopener noreferrer">
             How we work
           </a>
@@ -55,7 +55,7 @@ export default function Header() {
             Pricing
           </a>
           <a
-            className="mb-4 border-2 p-2 dark:border-white border-black"
+            className="mb-4 border-2 p-2 border-black"
             href=""
             target="_blank"
             rel="noopener noreferrer"

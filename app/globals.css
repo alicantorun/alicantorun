@@ -24,4 +24,15 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+
+  background-color: #ffffff;
+
+  background-image: radial-gradient(#000000 0.75px, transparent 0.75px),
+    radial-gradient(#000000 0.75px, #ffffff 0.75px);
+  background-size: 24px 24px;
+  background-position: 0 0, 12px 12px;
+}
+
+html {
+  @apply scroll-smooth;
 }
