@@ -40,7 +40,11 @@ const dummyMessages: { content: string; isUser: boolean }[] = [
 
 const ChatBubble: FC<ChatBubbleProps> = ({ messages, isUser }) => {
   return (
-    <div className={`flex mt-4 ${isUser ? "flex-row-reverse" : ""} items-end`}>
+    <div
+      className={`flex mt-4 ${
+        isUser ? "flex-row-reverse ml-8" : "mr-8"
+      } items-end`}
+    >
       <div className={`flex flex-col lg:max-w-[50%]`}>
         {messages.map((message, idx) => (
           <div
