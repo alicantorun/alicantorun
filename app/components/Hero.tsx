@@ -1,10 +1,10 @@
 export default function Hero() {
   return (
     <div className="text-center max-w-5xl w-full items-center justify-between mt-12 mb-24">
-      <h1 className="text-left text-4xl lg:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-black dark:from-purple-600 dark:to-white">
+      <h1 className="text-left text-5xl lg:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-black dark:from-purple-600 dark:to-white">
         Software & AI Automation,
       </h1>
-      <h1 className="mb-4 text-left text-6xl font-extrabold  bg-clip-text bg-gradient-to-r text-black dark:text-white">
+      <h1 className="mb-4 text-left text-5xl lg:text-6xl font-extrabold  bg-clip-text bg-gradient-to-r text-black dark:text-white">
         as a Service
       </h1>
       <h3 className="text-left text-xl font-bold">
