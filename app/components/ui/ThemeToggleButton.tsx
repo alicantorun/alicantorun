@@ -22,7 +22,7 @@ export default function ThemeToggleButton() {
 
   return (
     <label
-      className={`${styles.container} mr-8 z-50 mb-4`}
+      className={`${styles.container} mr-8 z-50 mb-4 lg:mb-0`}
       title={isDark ? "Activate light mode" : "Activate dark mode"}
       aria-label={isDark ? "Activate light mode" : "Activate dark mode"}
     >

@@ -26,13 +26,27 @@ body {
     rgb(var(--background-start-rgb));
 
   background-color: #ffffff;
-
-  background-image: radial-gradient(#000000 0.75px, transparent 0.75px),
-    radial-gradient(#000000 0.75px, #ffffff 0.75px);
+  background-image: radial-gradient(#dbdbdb 0.75px, transparent 0.75px),
+    radial-gradient(#dbdbdb 0.75px, #ffffff 0.75px);
   background-size: 24px 24px;
   background-position: 0 0, 12px 12px;
 }
 
 html {
   @apply scroll-smooth;
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(
+      -33.333%
+    ); /* Move by one-third, since we have three copies of the product array */
+  }
+}
+
+.animate-carousel {
+  animation: slide 30s linear infinite;
 }

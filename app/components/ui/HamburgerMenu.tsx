@@ -7,7 +7,7 @@ interface Props {
 
 export const HamburgerMenu: React.FC<Props> = ({ onClick, isOpen }) => {
   return (
-    <div className="cursor-pointer absolute -top-1 right-6" onClick={onClick}>
+    <div className="cursor-pointer absolute -top-2 right-6" onClick={onClick}>
       <input
         type="checkbox"
         className="opacity-0 w-0 h-0"

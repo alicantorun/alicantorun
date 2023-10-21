@@ -40,7 +40,7 @@ export default function Header() {
         </div>
       </div>
       <div
-        className={`absolute top-24 w-full left-0 transform transition-transform duration-500 ease-in-out overflow-hidden ${
+        className={`absolute top-10 w-full left-0 transform transition-transform duration-500 ease-in-out overflow-hidden ${
           isOpen ? "translate-y-0 max-h-[300px]" : "translate-y-[-150%]"
         }`}
       >

@@ -11,6 +11,7 @@ import Services from "./components/Services";
 import MembershipLevels from "./components/MembershipLevels";
 import FAQs from "./components/FAQs";
 import Footer from "./components/Footer";
+import { Carousel } from "./components/Carousel";
 import { Chat } from "./components/Chat";
 
 export default function Home() {
@@ -19,6 +20,7 @@ export default function Home() {
       <Header />
       <Hero />
       {/* <BannerOne /> */}
+      <Carousel />
       <Chat />
       <BannerTwo />
       <BannerThree />
