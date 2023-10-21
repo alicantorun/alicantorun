@@ -11,8 +11,8 @@ const config: Config = {
     extend: {
       scrollBehavior: ["smooth"],
       animation: {
-        // carousel: "slide 30s linear infinite",
-        // "carousel-fast": "slide 20s linear infinite",
+        carousel: "slide 30s linear infinite",
+        "carousel-fast": "slide 20s linear infinite",
       },
     },
   },

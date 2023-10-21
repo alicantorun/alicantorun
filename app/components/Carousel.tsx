@@ -1,46 +1,15 @@
 "use client";
 
+"use client";
+
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 
 export function Carousel() {
   const carouselRef = useRef<HTMLDivElement>(null);
   const [isDragging, setIsDragging] = useState<boolean>(false);
   const [startX, setStartX] = useState<number>(0);
   const [scrollLeft, setScrollLeft] = useState<number>(0);
-  const [scrollDifferential, setScrollDifferential] = useState<number>(0);
-
-  // Handle the automatic horizontal scroll based on vertical page scroll
-  useEffect(() => {
-    const handleAutoScroll = (e: Event) => {
-      if (carouselRef.current) {
-        const scrollFactor = 2;
-        carouselRef.current.scrollLeft =
-          (e.target as HTMLElement).scrollTop * scrollFactor +
-          scrollDifferential;
-      }
-    };
-
-    const carouselElement = carouselRef.current;
-    if (carouselElement) {
-      carouselElement.addEventListener("scroll", handleAutoScroll);
-    }
-
-    return () => {
-      if (carouselElement) {
-        carouselElement.removeEventListener("scroll", handleAutoScroll);
-      }
-    };
-  }, [scrollDifferential]);
-
-  // Capture the differential between scrollLeft and pageYOffset
-  const handleScrollEnd = () => {
-    if (carouselRef.current) {
-      setScrollDifferential(
-        carouselRef.current.scrollLeft - window.pageYOffset * 2
-      );
-    }
-  };
 
   const handleDragStart = (clientX: number) => {
     setIsDragging(true);
@@ -90,7 +59,6 @@ export function Carousel() {
         handleDragMove(e.touches[0].clientX);
       }}
       onTouchEnd={handleDragEnd}
-      onScroll={handleScrollEnd}
     >
       <ul className="flex gap-4">
         {carouselProducts.map((product, i) => (
@@ -100,7 +68,7 @@ export function Carousel() {
           >
             <Image
               draggable="false"
-              className="relative object-cover h-full w-full rounded-xl border-black border-2 cursor-pointer"
+              className="relative animate-carousel-fast lg:animate-carousel object-cover h-full w-full rounded-xl border-black border-2 cursor-pointer"
               src={product.src}
               alt={product.alt}
               width="1024"
