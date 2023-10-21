@@ -1,36 +1,52 @@
 "use client";
 
 import Image from "next/image";
-import { useRef, useState } from "react";
-
-// import { GridTileImage } from "./grid/tile";
+import { useEffect, useRef, useState } from "react";
 
 export function Carousel() {
+  const carouselRef = useRef<HTMLDivElement>(null);
   const [isDragging, setIsDragging] = useState<boolean>(false);
   const [startX, setStartX] = useState<number>(0);
   const [scrollLeft, setScrollLeft] = useState<number>(0);
-  const lastTouchMove = useRef<number>(Date.now());
+  const [scrollDifferential, setScrollDifferential] = useState<number>(0);
 
-  const carouselRef = useRef<HTMLDivElement>(null);
+  // Handle the automatic horizontal scroll based on vertical page scroll
+  useEffect(() => {
+    const handleAutoScroll = () => {
+      if (carouselRef.current) {
+        const scrollFactor = 2;
+        carouselRef.current.scrollLeft =
+          window.pageYOffset * scrollFactor + scrollDifferential;
+      }
+    };
 
-  const handleStart = (clientX: number) => {
+    window.addEventListener("scroll", handleAutoScroll);
+    return () => window.removeEventListener("scroll", handleAutoScroll);
+  }, [scrollDifferential]);
+
+  // Capture the differential between scrollLeft and pageYOffset
+  const handleScrollEnd = () => {
+    if (carouselRef.current) {
+      setScrollDifferential(
+        carouselRef.current.scrollLeft - window.pageYOffset * 2
+      );
+    }
+  };
+
+  const handleDragStart = (clientX: number) => {
     setIsDragging(true);
     setStartX(clientX);
     setScrollLeft(carouselRef.current!.scrollLeft);
   };
 
-  const handleMove = (clientX: number) => {
+  const handleDragMove = (clientX: number) => {
     if (!isDragging) return;
-    if (Date.now() - lastTouchMove.current < 20) return; // Throttle to 20ms
-    lastTouchMove.current = Date.now();
-
     const x = clientX;
     const distance = x - startX;
-    const speedMultiplier = window.innerWidth < 640 ? 1 : 1; // Faster scroll on smaller screens
-    carouselRef.current!.scrollLeft = scrollLeft - distance * speedMultiplier;
+    carouselRef.current!.scrollLeft = scrollLeft - distance;
   };
 
-  const handleEnd = () => {
+  const handleDragEnd = () => {
     setIsDragging(false);
   };
 
@@ -47,52 +63,40 @@ export function Carousel() {
     { handle: "6", src: "/e-commerce-app.png", alt: "e-commerce-app" },
   ];
 
-  if (!products?.length) return null;
+  if (!products.length) return null;
 
-  // Purposefully duplicating products to make the carousel loop and not run out of products on wide screens.
-  const carouselProducts = [...products, ...products, ...products];
+  const carouselProducts = [...products, ...products, ...products]; // Extend product list for carousel loop
 
   return (
     <div
-      className=" w-full pb-8 overflow-x-hidden "
+      className="w-full pb-8 overflow-x-hidden"
       ref={carouselRef}
-      onMouseDown={(e) => handleStart(e.clientX)}
-      onMouseMove={(e) => handleMove(e.clientX)}
-      onMouseUp={handleEnd}
-      onMouseLeave={handleEnd}
-      onTouchStart={(e) => handleStart(e.touches[0].clientX)}
+      onMouseDown={(e) => handleDragStart(e.clientX)}
+      onMouseMove={(e) => handleDragMove(e.clientX)}
+      onMouseUp={handleDragEnd}
+      onMouseLeave={handleDragEnd}
+      onTouchStart={(e) => handleDragStart(e.touches[0].clientX)}
       onTouchMove={(e) => {
         e.preventDefault();
-        handleMove(e.touches[0].clientX);
+        handleDragMove(e.touches[0].clientX);
       }}
-      onTouchEnd={handleEnd}
+      onTouchEnd={handleDragEnd}
+      onScroll={handleScrollEnd}
     >
-      <ul className="flex animate-carousel gap-4 ">
+      <ul className="flex gap-4">
         {carouselProducts.map((product, i) => (
           <li
             key={`${product.handle}${i}`}
-            className="relative aspect-square max-h-[400px] w-2/3 max-w-[475px] flex-none "
+            className="relative aspect-square max-h-[400px] w-2/3 max-w-[475px] flex-none"
           >
             <Image
               draggable="false"
-              className=" relative object-cover h-full w-full rounded-xl border-black border-2 cursor-pointer"
+              className="relative object-cover h-full w-full rounded-xl border-black border-2 cursor-pointer"
               src={product.src}
               alt={product.alt}
               width="1024"
               height="1024"
-            >
-              {/* <GridTileImage
-                alt={product.title}
-                label={{
-                  title: product.title,
-                  amount: product.priceRange.maxVariantPrice.amount,
-                  currencyCode: product.priceRange.maxVariantPrice.currencyCode,
-                }}
-                src={product.featuredImage?.url}
-                fill
-                sizes="(min-width: 1024px) 25vw, (min-width: 768px) 33vw, 50vw"
-              /> */}
-            </Image>
+            />
           </li>
         ))}
       </ul>

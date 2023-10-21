@@ -42,11 +42,7 @@ html {
   }
   100% {
     transform: translateX(
-      -33.333%
+      -100%
     ); /* Move by one-third, since we have three copies of the product array */
   }
-}
-
-.animate-carousel {
-  animation: slide 30s linear infinite;
 }

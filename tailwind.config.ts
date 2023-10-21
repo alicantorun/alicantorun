@@ -10,6 +10,10 @@ const config: Config = {
   theme: {
     extend: {
       scrollBehavior: ["smooth"],
+      animation: {
+        // carousel: "slide 30s linear infinite",
+        // "carousel-fast": "slide 20s linear infinite",
+      },
     },
   },
   plugins: [],
