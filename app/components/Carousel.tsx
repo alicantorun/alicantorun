@@ -1,13 +1,34 @@
-import Link from "next/link";
+"use client";
+
 import Image from "next/image";
+import { useRef, useState } from "react";
 
 // import { GridTileImage } from "./grid/tile";
 
-export async function Carousel() {
-  // Collections that start with `hidden-*` are hidden from the search page.
-  // const products = await getCollectionProducts({
-  //   collection: "hidden-homepage-carousel",
-  // });
+export function Carousel() {
+  const [isDragging, setIsDragging] = useState<boolean>(false);
+  const [startX, setStartX] = useState<number>(0);
+  const [scrollLeft, setScrollLeft] = useState<number>(0);
+
+  const carouselRef = useRef<HTMLDivElement>(null);
+
+  const handleMouseDown = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    setIsDragging(true);
+    setStartX(e.pageX);
+    setScrollLeft(carouselRef.current!.scrollLeft);
+  };
+
+  const handleMouseUp = () => {
+    setIsDragging(false);
+  };
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    if (!isDragging) return;
+    e.preventDefault();
+    const x = e.pageX;
+    const distance = x - startX;
+    carouselRef.current!.scrollLeft = scrollLeft - distance;
+  };
 
   const products: any[] = [
     { handle: "1", src: "/ai-chat-app.png", alt: "ai-chat-app" },
@@ -28,15 +49,21 @@ export async function Carousel() {
   const carouselProducts = [...products, ...products, ...products];
 
   return (
-    <div className=" w-full pb-8 overflow-x-hidden">
+    <div
+      className=" w-full pb-8 overflow-x-hidden "
+      ref={carouselRef}
+      onMouseDown={handleMouseDown}
+      onMouseUp={handleMouseUp}
+      onMouseMove={handleMouseMove}
+    >
       <ul className="flex animate-carousel gap-4">
         {carouselProducts.map((product, i) => (
           <li
             key={`${product.handle}${i}`}
-            className="relative aspect-square h-[30vh] max-h-[275px] w-2/3 max-w-[475px] flex-none md:w-1/3"
+            className="relative aspect-square h-[50vh] max-h-[325px] w-2/3 max-w-[475px] flex-none "
           >
             <Image
-              className="relative h-full w-full rounded-xl"
+              className="relative object-cover h-full w-full rounded-xl border-black border-2 cursor-pointer"
               src={product.src}
               alt={product.alt}
               width="1024"
