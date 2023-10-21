@@ -12,16 +12,25 @@ export function Carousel() {
 
   // Handle the automatic horizontal scroll based on vertical page scroll
   useEffect(() => {
-    const handleAutoScroll = () => {
+    const handleAutoScroll = (e: Event) => {
       if (carouselRef.current) {
         const scrollFactor = 2;
         carouselRef.current.scrollLeft =
-          window.pageYOffset * scrollFactor + scrollDifferential;
+          (e.target as HTMLElement).scrollTop * scrollFactor +
+          scrollDifferential;
       }
     };
 
-    window.addEventListener("scroll", handleAutoScroll);
-    return () => window.removeEventListener("scroll", handleAutoScroll);
+    const carouselElement = carouselRef.current;
+    if (carouselElement) {
+      carouselElement.addEventListener("scroll", handleAutoScroll);
+    }
+
+    return () => {
+      if (carouselElement) {
+        carouselElement.removeEventListener("scroll", handleAutoScroll);
+      }
+    };
   }, [scrollDifferential]);
 
   // Capture the differential between scrollLeft and pageYOffset
