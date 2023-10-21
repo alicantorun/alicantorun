@@ -26,7 +26,7 @@ export function Carousel() {
 
     const x = clientX;
     const distance = x - startX;
-    const speedMultiplier = window.innerWidth < 640 ? 6 : 3; // Faster scroll on smaller screens
+    const speedMultiplier = window.innerWidth < 640 ? 1 : 1; // Faster scroll on smaller screens
     carouselRef.current!.scrollLeft = scrollLeft - distance * speedMultiplier;
   };
 
