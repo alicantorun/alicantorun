@@ -22,7 +22,7 @@ export default function Home() {
       {/* <BannerOne /> */}
       <Carousel />
       <Chat />
-      <BannerThree />
+      {/* <BannerThree /> */}
       <BannerTwo />
       <Quote />
       <Membership />
