@@ -13,8 +13,11 @@ export default function Header() {
 
   return (
     <>
-      <div className="z-50 max-w-5xl w-full items-center justify-between flex mb-12 lg:mb-24 lg:p-0 p-4">
-        <img className="object-scale-down lg:h-16 h-12" src="/bytehopper.png" />
+      <div className="fixed z-50 max-w-5xl w-full items-center justify-between flex mb-12 lg:mb-24 px-8 bg-white rounded-full shadow-md">
+        <img
+          className="py-2 object-scale-down lg:h-16 h-12"
+          src="/bytehopper.png"
+        />
         {/* <p className="text-2xl font-semibold">Bytehopper.AI</p> */}
         <div className=" justify-center items-center hidden lg:flex">
           <a className="mr-8" href="" target="_blank" rel="noopener noreferrer">
