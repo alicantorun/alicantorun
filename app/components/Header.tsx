@@ -13,7 +13,7 @@ export default function Header() {
 
   return (
     <>
-      <div className="fixed z-50 max-w-5xl w-full items-center justify-between flex mb-12 lg:mb-24 px-8 bg-white rounded-full shadow-md">
+      <div className="lg:fixed z-50 max-w-5xl w-full items-center justify-between flex mb-12 lg:mb-24 px-8 bg-white lg:rounded-full shadow-md">
         <img
           className="py-2 object-scale-down lg:h-16 h-12"
           src="/bytehopper.png"
@@ -44,7 +44,7 @@ export default function Header() {
         </div>
       </div>
       <div
-        className={`absolute top-10 w-full left-0 transform transition-transform duration-500 ease-in-out overflow-hidden ${
+        className={`absolute top-14 w-full left-0 transform transition-transform duration-500 ease-in-out overflow-hidden ${
           isOpen ? "translate-y-0 max-h-[300px]" : "translate-y-[-150%]"
         }`}
       >
