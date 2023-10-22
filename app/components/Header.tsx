@@ -13,8 +13,8 @@ export default function Header() {
 
   return (
     <>
-      <div className="z-50 max-w-5xl w-full items-center justify-between flex mb-12 lg:mb-24">
-        <p className="">Bytehopper.AI</p>
+      <div className="z-50 max-w-5xl w-full items-center justify-between flex mb-12 lg:mb-24 p-4">
+        <p className="text-2xl font-semibold">Bytehopper.AI</p>
         <div className=" justify-center items-center hidden lg:flex">
           <a className="mr-8" href="" target="_blank" rel="noopener noreferrer">
             How we work
