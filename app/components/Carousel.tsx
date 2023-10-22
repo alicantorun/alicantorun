@@ -1,25 +1,13 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 
 export function Carousel() {
   const carouselRef = useRef<HTMLDivElement>(null);
   const [isDragging, setIsDragging] = useState<boolean>(false);
   const [startX, setStartX] = useState<number>(0);
   const [scrollLeft, setScrollLeft] = useState<number>(0);
-
-  useEffect(() => {
-    const disableScroll = () => {
-      document.body.style.overflowY = isDragging ? "hidden" : "auto";
-    };
-
-    disableScroll();
-
-    return () => {
-      document.body.style.overflowY = "auto";
-    };
-  }, [isDragging]);
 
   const handleDragStart = (clientX: number) => {
     setIsDragging(true);
@@ -73,21 +61,25 @@ export function Carousel() {
   ];
 
   if (!products.length) return null;
-  const carouselProducts = [...products, ...products, ...products];
+
+  const carouselProducts = [...products]; // Extend product list for carousel loop
 
   return (
     <div
-      className="w-full overflow-x-hidden touch-action-pan-x"
+      className="w-full mb-16 overflow-x-hidden"
       ref={carouselRef}
       onMouseDown={(e) => handleDragStart(e.clientX)}
       onMouseMove={(e) => handleDragMove(e.clientX)}
       onMouseUp={handleDragEnd}
       onMouseLeave={handleDragEnd}
-      onTouchStart={(e) => handleDragStart(e.changedTouches[0].clientX)}
-      onTouchMove={(e) => handleDragMove(e.changedTouches[0].clientX)}
+      onTouchStart={(e) => handleDragStart(e.touches[0].clientX)}
+      onTouchMove={(e) => {
+        e.preventDefault();
+        handleDragMove(e.touches[0].clientX);
+      }}
       onTouchEnd={handleDragEnd}
     >
-      <ul className="flex animate-carousel-fast lg:animate-carousel gap-4">
+      <ul className="flex ml-4 lg:animate-carousel gap-4">
         {carouselProducts.map((product, i) => (
           <li
             key={`${product.handle}${i}`}
