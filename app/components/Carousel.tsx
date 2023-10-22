@@ -1,7 +1,5 @@
 "use client";
 
-"use client";
-
 import Image from "next/image";
 import { useRef, useState } from "react";
 
@@ -63,8 +61,7 @@ export function Carousel() {
   ];
 
   if (!products.length) return null;
-
-  const carouselProducts = [...products, ...products, ...products]; // Extend product list for carousel loop
+  const carouselProducts = [...products, ...products, ...products];
 
   return (
     <div
@@ -74,11 +71,8 @@ export function Carousel() {
       onMouseMove={(e) => handleDragMove(e.clientX)}
       onMouseUp={handleDragEnd}
       onMouseLeave={handleDragEnd}
-      onTouchStart={(e) => handleDragStart(e.touches[0].clientX)}
-      onTouchMove={(e) => {
-        e.preventDefault();
-        handleDragMove(e.touches[0].clientX);
-      }}
+      onTouchStart={(e) => handleDragStart(e.changedTouches[0].clientX)}
+      onTouchMove={(e) => handleDragMove(e.changedTouches[0].clientX)}
       onTouchEnd={handleDragEnd}
     >
       <ul className="flex animate-carousel-fast lg:animate-carousel gap-4">
