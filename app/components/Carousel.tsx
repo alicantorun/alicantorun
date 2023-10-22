@@ -1,13 +1,25 @@
 "use client";
 
 import Image from "next/image";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export function Carousel() {
   const carouselRef = useRef<HTMLDivElement>(null);
   const [isDragging, setIsDragging] = useState<boolean>(false);
   const [startX, setStartX] = useState<number>(0);
   const [scrollLeft, setScrollLeft] = useState<number>(0);
+
+  useEffect(() => {
+    const disableScroll = () => {
+      document.body.style.overflowY = isDragging ? "hidden" : "auto";
+    };
+
+    disableScroll();
+
+    return () => {
+      document.body.style.overflowY = "auto";
+    };
+  }, [isDragging]);
 
   const handleDragStart = (clientX: number) => {
     setIsDragging(true);
@@ -65,7 +77,7 @@ export function Carousel() {
 
   return (
     <div
-      className="w-full overflow-x-hidden"
+      className="w-full overflow-x-hidden touch-action-pan-x"
       ref={carouselRef}
       onMouseDown={(e) => handleDragStart(e.clientX)}
       onMouseMove={(e) => handleDragMove(e.clientX)}
