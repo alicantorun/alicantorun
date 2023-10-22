@@ -85,7 +85,7 @@ export function Carousel() {
             key={`${product.handle}${i}`}
             className="relative aspect-square max-h-[400px] max-w-[475px] w-2/3  flex-none"
           >
-            <h1 className="text-2xl pb-2">{product.type}</h1>
+            {/* <h1 className="text-2xl pb-2">{product.type}</h1> */}
             <Image
               draggable="false"
               className="relative object-cover h-full w-full rounded-xl shadow-lg cursor-pointer"
