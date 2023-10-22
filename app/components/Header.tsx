@@ -33,7 +33,7 @@ export default function Header() {
           >
             Contact us
           </a>
-          <ThemeToggleButton />
+          {/* <ThemeToggleButton /> */}
         </div>
         <div className="lg:hidden">
           <HamburgerMenu onClick={handleSetIsOpen} isOpen={isOpen} />
@@ -62,7 +62,7 @@ export default function Header() {
           >
             Contact us
           </a>
-          <ThemeToggleButton />
+          {/* <ThemeToggleButton /> */}
         </div>
       </div>
     </>

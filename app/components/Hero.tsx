@@ -1,3 +1,5 @@
+import { Laurel } from "./ui/Laurel";
+
 export default function Hero() {
   return (
     <div className="text-center max-w-5xl w-full items-center justify-between mt-12 mb-24">
@@ -17,7 +19,7 @@ export default function Hero() {
       </h3>
       <div className="mb-8 flex flex-col lg:block">
         <a
-          className="border-2 lg:mr-4 text-xl px-8 py-4 rounded-xl bg-black text-white"
+          className=" lg:mr-4 text-xl px-8 py-4 rounded-xl bg-black text-white"
           href="https://calendly.com/alicantorun/30min"
           target="_blank"
           rel="noopener noreferrer"
@@ -25,12 +27,15 @@ export default function Hero() {
           Schedule a call 📅
         </a>
         <a
-          className="border-2 text-xl px-8 py-4 rounded-xl bg-black text-white"
+          className=" text-xl px-8 py-4 rounded-xl bg-black text-white"
           href="#membership-levels"
         >
           See plans 🏷️
         </a>
       </div>
+      <Laurel>
+        <h3 className="text-left text-2xl font-bold">Best Agency</h3>
+      </Laurel>
       <h3 className="">
         Software you'll <span className="text-2xl text-red-600">❤️</span>,
         guaranteed.

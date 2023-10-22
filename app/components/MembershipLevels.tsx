@@ -35,7 +35,7 @@ export default function MembershipLevels() {
             One request at a time. Pause or cancel anytime.
           </h3>
           <h1 className="text-4xl">
-            €2799 <span className="text-xl">/m</span>
+            €4799 <span className="text-xl">/m</span>
           </h1>
           <h3 className="text-xl mb-4 opacity-50">Pause or cancel anytime</h3>
           <ol>

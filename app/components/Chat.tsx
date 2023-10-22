@@ -11,29 +11,27 @@ const dummyMessages: { content: string; isUser: boolean }[] = [
     isUser: false,
   },
   {
-    content: "Greetings! Alican, founder of Bytehopper.ai here 👋",
+    content: "Hey! Alican from Bytehopper.ai here 👋",
+    isUser: true,
+  },
+  {
+    content: "We're an AI automation & Software agency for innovators.",
     isUser: true,
   },
   {
     content:
-      "we are an AI automation agency, crafted by innovators for innovators.",
+      "We understand the challenge of finding freelancers on platforms like Upwork or searching for months for the right software expert at a reasonable cost.",
     isUser: true,
   },
   {
     content:
-      "We understand the struggle of navigating through freelancers on platforms like Upwork or investing endless months searching for the ideal software expert at a reasonable cost.",
+      "Let us streamline your projects with tailored digital solutions and clear pricing.",
     isUser: true,
   },
   {
-    content:
-      "We champion efficiency. We empower you to realize your visionary projects through AI and automation. With two comprehensive subscription models or tailored pricing, the scope of your automation needs aligns with the package you select.",
-    isUser: true,
-  },
-  {
-    content: `Our goal is to ensure our collaboration is seamless and rewarding.
-    👉 Real-time communication via Slack
-    👉 Transparent pricing
-    👉 Limitless iterations`,
+    content: `👉 Slack communication
+    👉 Clear pricing
+    👉 Unlimited iterations`,
     isUser: true,
   },
 ];
