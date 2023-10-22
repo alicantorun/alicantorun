@@ -90,7 +90,7 @@ export function Carousel() {
             <h1 className="text-2xl">{product.type}</h1>
             <Image
               draggable="false"
-              className="relative object-cover h-full w-full rounded-xl border-black border-2 cursor-pointer"
+              className="relative object-cover h-full w-full rounded-xl shadow-lg cursor-pointer"
               src={product.src}
               alt={product.alt}
               width="1920"

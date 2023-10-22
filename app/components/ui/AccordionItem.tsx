@@ -1,23 +1,27 @@
 "use client";
 
-import { Fragment, useState } from "react";
+import { FC, Fragment, useState } from "react";
 
-export default function AccordionItem({
-  title,
-  content,
-}: {
+interface AccordionItemProps {
   title: string;
   content: string[];
-}) {
+  isLast?: boolean;
+}
+
+const AccordionItem: FC<AccordionItemProps> = ({
+  title,
+  content,
+  isLast = false,
+}) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="border-b">
+    <div className={`border-b ${isLast ? " rounded-b-2xl" : "mb-4"}`}>
       <div
         className="p-4 cursor-pointer flex justify-between items-center"
         onClick={() => setIsOpen(!isOpen)}
       >
-        <p className="font-bold text-left ">{title}</p>
+        <p className="font-bold text-left">{title}</p>
         <div
           className={`transform transition-transform duration-500 ${
             isOpen ? "rotate-90" : ""
@@ -55,4 +59,6 @@ export default function AccordionItem({
       </div>
     </div>
   );
-}
+};
+
+export default AccordionItem;

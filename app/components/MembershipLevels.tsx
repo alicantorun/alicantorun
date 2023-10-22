@@ -7,7 +7,7 @@ export default function MembershipLevels() {
       <h1 className="mb-4 text-4xl font-extrabold">Memberships levels</h1>
       <h1 className="mb-4 text-xl">Choose a plan that's right for you.</h1>
       <div className="flex flex-col lg:flex-row mb-8">
-        <div className="p-8 lg:mb-0 lg:mr-4 flex-1 border-black dark:border-white border-2 flex-col justify-center rounded-2xl bg-white">
+        <div className="p-8 lg:mb-0 lg:mr-4 flex-1 border-black dark:border-white  flex-col justify-center rounded-2xl bg-white shadow-lg">
           <h3 className="text-start  text-4xl mb-4 font-bold">Standard</h3>
           <h1 className="text-start font-extrabold text-4xl mb-2">
             €2799 <span className="text-xl opacity-60">/m</span>
@@ -45,11 +45,11 @@ export default function MembershipLevels() {
               Payments via Stripe
             </li>
           </ol>
-          <button className="border-2 lg:mr-4 text-xl px-8 py-4 rounded-full bg-black text-white">
+          <button className=" lg:mr-4 text-xl px-8 py-4 rounded-full bg-black text-white">
             Pay for standard
           </button>
         </div>
-        <div className="p-8  lg:mb-0 lg:ml-4 flex-1 border-black dark:border-white border-2 flex-col justify-center rounded-2xl bg-white">
+        <div className="p-8  lg:mb-0 lg:ml-4 flex-1 border-black dark:border-white  flex-col justify-center rounded-2xl bg-white shadow-lg">
           <h3 className="text-start text-4xl mb-4 font-bold">Pro</h3>
           <h1 className="text-start text-4xl font-extrabold  mb-2">
             €4799 <span className="text-xl opacity-60">/m</span>
@@ -87,12 +87,12 @@ export default function MembershipLevels() {
               Payments via Stripe
             </li>
           </ol>
-          <button className="border-2 lg:mr-4 text-xl px-8 py-4 rounded-full bg-black text-white">
+          <button className=" lg:mr-4 text-xl px-8 py-4 rounded-full bg-black text-white">
             Pay for pro
           </button>
         </div>
       </div>
-      <div className="p-8 mb-4 lg:mb-0 flex-1 border-black dark:border-white border-2 flex-col justify-center rounded-2xl bg-white">
+      <div className="p-8 mb-4 lg:mb-0 flex-1 border-black dark:border-white  flex-col justify-center rounded-2xl bg-white shadow-lg">
         <h3 className="text-start  text-4xl mb-4 font-bold">Custom pricing</h3>
         <h3 className="text-xl text-left mb-4 opacity-60">
           For people that need 1 time support or are not sure about subscription
@@ -115,7 +115,7 @@ export default function MembershipLevels() {
             Async Slack communication&support
           </li>
         </ol>
-        <button className="border-2 lg:mr-4 text-xl px-8 py-4 rounded-full bg-black text-white">
+        <button className=" lg:mr-4 text-xl px-8 py-4 rounded-full bg-black text-white">
           Schedule a call
         </button>
       </div>
