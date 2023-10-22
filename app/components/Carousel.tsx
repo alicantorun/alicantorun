@@ -68,7 +68,7 @@ export function Carousel() {
 
   return (
     <div
-      className="w-full pb-8 overflow-x-hidden"
+      className="w-full mb-16 overflow-x-hidden"
       ref={carouselRef}
       onMouseDown={(e) => handleDragStart(e.clientX)}
       onMouseMove={(e) => handleDragMove(e.clientX)}
@@ -81,13 +81,13 @@ export function Carousel() {
       }}
       onTouchEnd={handleDragEnd}
     >
-      <ul className="flex  animate-carousel-fast lg:animate-carousel gap-4">
+      <ul className="flex animate-carousel-fast lg:animate-carousel gap-4">
         {carouselProducts.map((product, i) => (
           <li
             key={`${product.handle}${i}`}
             className="relative aspect-square max-h-[400px] max-w-[475px] w-2/3  flex-none"
           >
-            <h1 className="text-2xl">{product.type}</h1>
+            <h1 className="text-2xl pb-2">{product.type}</h1>
             <Image
               draggable="false"
               className="relative object-cover h-full w-full rounded-xl shadow-lg cursor-pointer"

@@ -3,7 +3,7 @@ import Header from "./components/Header";
 import Hero from "./components/Hero";
 import BannerOne from "./components/BannerOne";
 import BannerTwo from "./components/BannerTwo";
-import BannerThree from "./components/BannerThree";
+import { BannerThree } from "./components/BannerThree";
 import BannerFour from "./components/BannerFour";
 import Quote from "./components/Quote";
 import Membership from "./components/Membership";
@@ -22,8 +22,8 @@ export default function Home() {
       {/* <BannerOne /> */}
       <Carousel />
       <Chat />
-      <BannerTwo />
       <BannerThree />
+      <BannerTwo />
       <Quote />
       <Membership />
       <BannerFour />
