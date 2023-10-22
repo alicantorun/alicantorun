@@ -62,7 +62,7 @@ export function Carousel() {
 
   if (!products.length) return null;
 
-  const carouselProducts = [...products]; // Extend product list for carousel loop
+  const carouselProducts = [...products, ...products, ...products]; // Extend product list for carousel loop
 
   return (
     <div
