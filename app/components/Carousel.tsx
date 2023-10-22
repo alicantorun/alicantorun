@@ -29,16 +29,37 @@ export function Carousel() {
   };
 
   const products: any[] = [
-    { handle: "1", src: "/ai-chat-app.png", alt: "ai-chat-app" },
+    {
+      handle: "1",
+      src: "/ai-chat-app.png",
+      alt: "ai-chat-app",
+      type: "Chatbots",
+    },
     {
       handle: "2",
       src: "/ai-interior-design-app.png",
       alt: "ai-interior-design-app",
+      type: "AI apps",
     },
-    { handle: "3", src: "/blog-app.png", alt: "blog-app" },
-    { handle: "4", src: "/pricing-plan-app.png", alt: "pricing-plan-app" },
-    { handle: "5", src: "/e-commerce-app-2.png", alt: "e-commerce-app-2" },
-    { handle: "6", src: "/e-commerce-app.png", alt: "e-commerce-app" },
+    { handle: "3", src: "/blog-app.png", alt: "blog-app", type: "Blogs" },
+    {
+      handle: "4",
+      src: "/pricing-plan-app.png",
+      alt: "pricing-plan-app",
+      type: "Payment integrations",
+    },
+    {
+      handle: "5",
+      src: "/e-commerce-app-2.png",
+      alt: "e-commerce-app-2",
+      type: "Ecommerce apps",
+    },
+    {
+      handle: "6",
+      src: "/e-commerce-app.png",
+      alt: "e-commerce-app",
+      type: "Ecommerce apps",
+    },
   ];
 
   if (!products.length) return null;
@@ -60,19 +81,20 @@ export function Carousel() {
       }}
       onTouchEnd={handleDragEnd}
     >
-      <ul className="flex gap-4">
+      <ul className="flex  animate-carousel-fast lg:animate-carousel gap-4">
         {carouselProducts.map((product, i) => (
           <li
             key={`${product.handle}${i}`}
-            className="relative aspect-square max-h-[400px] w-2/3 max-w-[475px] flex-none"
+            className="relative aspect-square max-h-[400px] max-w-[475px] w-2/3  flex-none"
           >
+            <h1 className="text-2xl">{product.type}</h1>
             <Image
               draggable="false"
-              className="relative animate-carousel-fast lg:animate-carousel object-cover h-full w-full rounded-xl border-black border-2 cursor-pointer"
+              className="relative object-cover h-full w-full rounded-xl border-black border-2 cursor-pointer"
               src={product.src}
               alt={product.alt}
-              width="1024"
-              height="1024"
+              width="1920"
+              height="1080"
             />
           </li>
         ))}

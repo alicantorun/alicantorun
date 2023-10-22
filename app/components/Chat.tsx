@@ -49,7 +49,7 @@ const ChatBubble: FC<ChatBubbleProps> = ({ messages, isUser }) => {
         {messages.map((message, idx) => (
           <div
             key={idx}
-            className={`p-4 rounded-lg mb-2 text-left ${
+            className={`p-4 rounded-2xl mb-2 text-left ${
               isUser ? "bg-blue-500 text-white" : "bg-gray-200 text-black"
             }`}
           >
@@ -90,7 +90,7 @@ const Chat: FC<ChatProps> = ({ messages = dummyMessages }) => {
     .map((msg) => msg.content);
 
   return (
-    <div className="text-center max-w-5xl w-full items-center justify-between mb-12 lg:mb-24 bg-gray-100 rounded-xl p-4">
+    <div className="mt-8 text-center max-w-5xl w-full items-center justify-between mb-12 lg:mb-24 bg-gray-100 bg-opacity-50 p-4 rounded-xl">
       {otherMessages.length > 0 && (
         <ChatBubble messages={otherMessages} isUser={false} />
       )}
