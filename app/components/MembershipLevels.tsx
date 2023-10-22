@@ -2,12 +2,12 @@ export default function MembershipLevels() {
   return (
     <div
       id="membership-levels"
-      className="text-center max-w-5xl w-full items-center justify-between mb-12 lg:mb-24 p-4"
+      className="text-center max-w-5xl w-full items-center justify-between mb-12 lg:mb-24 p-4 pb-0"
     >
       <h1 className="mb-4 text-4xl font-extrabold">Memberships levels</h1>
       <h1 className="mb-4 text-xl">Choose a plan that's right for you.</h1>
       <div className="flex flex-col lg:flex-row mb-8">
-        <div className="p-8 lg:mb-0 lg:mr-4 flex-1 border-black dark:border-white  flex-col justify-center rounded-2xl bg-white shadow-lg">
+        <div className="p-8 mb-8 lg:mb-0 lg:mr-4 flex-1 border-black dark:border-white  flex-col justify-center rounded-2xl bg-white shadow-lg">
           <h3 className="text-start  text-4xl mb-4 font-bold">Standard</h3>
           <h1 className="text-start font-extrabold text-4xl mb-2">
             €2799 <span className="text-xl opacity-60">/m</span>
@@ -92,7 +92,7 @@ export default function MembershipLevels() {
           </button>
         </div>
       </div>
-      <div className="p-8 mb-4 lg:mb-0 flex-1 border-black dark:border-white  flex-col justify-center rounded-2xl bg-white shadow-lg">
+      <div className="p-8 flex-1 border-black dark:border-white  flex-col justify-center rounded-2xl bg-white shadow-lg">
         <h3 className="text-start  text-4xl mb-4 font-bold">Custom pricing</h3>
         <h3 className="text-xl text-left mb-4 opacity-60">
           For people that need 1 time support or are not sure about subscription

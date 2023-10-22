@@ -88,7 +88,7 @@ const Chat: FC<ChatProps> = ({ messages = dummyMessages }) => {
     .map((msg) => msg.content);
 
   return (
-    <div className="mt-24 text-center max-w-5xl w-full items-center justify-between mb-12 lg:mb-24 bg-gray-100 bg-opacity-50 p-4 rounded-xl shadow-lg">
+    <div className="lg:mt-24 mt:16 text-center max-w-5xl w-full items-center justify-between mb-12 lg:mb-24 bg-gray-100 bg-opacity-50 p-4 rounded-xl shadow-lg">
       {otherMessages.length > 0 && (
         <ChatBubble messages={otherMessages} isUser={false} />
       )}
