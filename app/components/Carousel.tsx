@@ -65,7 +65,7 @@ export function Carousel() {
 
   return (
     <div
-      className="w-full"
+      className="w-full overflow-x-hidden"
       ref={carouselRef}
       onMouseDown={(e) => handleDragStart(e.clientX)}
       onMouseMove={(e) => handleDragMove(e.clientX)}
