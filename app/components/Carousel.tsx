@@ -91,16 +91,28 @@ export function Carousel() {
     <ul
       ref={carouselRef}
       className="flex gap-4 items-center overflow-x-auto w-full cursor-pointer"
-      onMouseDown={handleMouseDown}
-      onMouseLeave={handleMouseLeave}
-      onMouseUp={handleMouseUp}
-      onMouseMove={handleMouseMove}
-      onTouchStart={handleTouchStart}
-      onTouchEnd={handleTouchEnd}
-      onTouchMove={handleTouchMove}
+      // onMouseDown={handleMouseDown}
+      // onMouseLeave={handleMouseLeave}
+      // onMouseUp={handleMouseUp}
+      // onMouseMove={handleMouseMove}
+      // onTouchStart={handleTouchStart}
+      // onTouchEnd={handleTouchEnd}
+      // onTouchMove={handleTouchMove}
+      style={{
+        scrollbarWidth: "none",
+        msOverflowStyle: "none",
+        scrollSnapType: "x mandatory", // Snap horizontally
+        scrollBehavior: "smooth", // Smooth scroll
+      }}
     >
       {carouselProducts.map((src, index) => (
-        <li key={index} className="flex-shrink-0">
+        <li
+          key={index}
+          className="flex-shrink-0"
+          style={{
+            scrollSnapAlign: "center", // Each image will snap to the center
+          }}
+        >
           <h1 className="text-2xl pb-2">{src.type}</h1>
           <ImageCard src={src.src} />
         </li>
