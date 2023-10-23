@@ -31,6 +31,24 @@ export function Carousel() {
     carouselRef.current.scrollLeft = scrollLeft - walk;
   };
 
+  const handleTouchStart = (e) => {
+    setIsDragging(true);
+    setStartX(e.touches[0].pageX);
+    setScrollLeft(carouselRef.current.scrollLeft);
+  };
+
+  const handleTouchEnd = () => {
+    setIsDragging(false);
+  };
+
+  const handleTouchMove = (e) => {
+    if (!isDragging) return;
+    e.preventDefault(); // Prevent default touch move behavior
+    const x = e.touches[0].pageX;
+    const walk = (x - startX) * 3;
+    carouselRef.current.scrollLeft = scrollLeft - walk;
+  };
+
   const products: any[] = [
     {
       handle: "1",
@@ -77,6 +95,9 @@ export function Carousel() {
       onMouseLeave={handleMouseLeave}
       onMouseUp={handleMouseUp}
       onMouseMove={handleMouseMove}
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
+      onTouchMove={handleTouchMove}
     >
       {carouselProducts.map((src, index) => (
         <li key={index} className="flex-shrink-0">
