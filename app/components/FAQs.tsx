@@ -65,7 +65,7 @@ const FAQ = [
 export default function FAQs() {
   return (
     <>
-      {/* <h1 className="mb-4 text-4xl font-extrabold">FAQs</h1> */}
+      <h1 className="mb-4 text-4xl font-extrabold">FAQs</h1>
       <div className="text-center max-w-5xl items-center justify-between m-4  mb-12 lg:mb-24 bg-white rounded-2xl shadow-lg">
         {FAQ.map((item, index) => (
           <AccordionItem
