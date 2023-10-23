@@ -1,53 +1,76 @@
 "use client";
 
 import Image from "next/image";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
+
+interface Product {
+  handle: string;
+  src: string;
+  alt: string;
+  type: string;
+}
 
 export function Carousel() {
-  const [isDragging, setIsDragging] = useState(false);
-  const [startX, setStartX] = useState(0);
-  const [scrollLeft, setScrollLeft] = useState(0);
-  const carouselRef = useRef(null);
+  const [isDragging, setIsDragging] = useState<boolean>(false);
+  const [startX, setStartX] = useState<number>(0);
+  const [scrollLeft, setScrollLeft] = useState<number>(0);
+  const [isLargeScreen, setIsLargeScreen] = useState<boolean>(true);
+  const carouselRef = useRef<HTMLUListElement>(null);
 
-  // const handleMouseDown = (e) => {
-  //   setIsDragging(true);
-  //   setStartX(e.pageX - carouselRef.current.offsetLeft);
-  //   setScrollLeft(carouselRef.current.scrollLeft);
-  // };
+  useEffect(() => {
+    const updateScreenSize = () => {
+      setIsLargeScreen(window.innerWidth >= 1024);
+    };
+    window.addEventListener("resize", updateScreenSize);
+    updateScreenSize();
+    return () => window.removeEventListener("resize", updateScreenSize);
+  }, []);
 
-  // const handleMouseLeave = () => {
-  //   setIsDragging(false);
-  // };
+  const handleMouseDown = (e: React.MouseEvent) => {
+    if (!isLargeScreen) return;
+    setIsDragging(true);
+    setStartX(e.pageX - (carouselRef.current?.offsetLeft || 0));
+    setScrollLeft(carouselRef.current?.scrollLeft || 0);
+  };
 
-  // const handleMouseUp = () => {
-  //   setIsDragging(false);
-  // };
+  const handleMouseLeave = () => {
+    setIsDragging(false);
+  };
 
-  // const handleMouseMove = (e) => {
-  //   if (!isDragging) return;
-  //   e.preventDefault();
-  //   const x = e.pageX - carouselRef.current.offsetLeft;
-  //   const walk = (x - startX) * 3; // scroll-fast
-  //   carouselRef.current.scrollLeft = scrollLeft - walk;
-  // };
+  const handleMouseUp = () => {
+    setIsDragging(false);
+  };
 
-  // const handleTouchStart = (e) => {
-  //   setIsDragging(true);
-  //   setStartX(e.touches[0].pageX);
-  //   setScrollLeft(carouselRef.current.scrollLeft);
-  // };
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isDragging || !isLargeScreen) return;
+    e.preventDefault();
+    const x = e.pageX - (carouselRef.current?.offsetLeft || 0);
+    const walk = (x - startX) * 3;
+    if (carouselRef.current) {
+      carouselRef.current.scrollLeft = scrollLeft - walk;
+    }
+  };
 
-  // const handleTouchEnd = () => {
-  //   setIsDragging(false);
-  // };
+  const handleTouchStart = (e: React.TouchEvent) => {
+    if (!isLargeScreen) return;
+    setIsDragging(true);
+    setStartX(e.touches[0].pageX);
+    setScrollLeft(carouselRef.current?.scrollLeft || 0);
+  };
 
-  // const handleTouchMove = (e) => {
-  //   if (!isDragging) return;
-  //   e.preventDefault(); // Prevent default touch move behavior
-  //   const x = e.touches[0].pageX;
-  //   const walk = (x - startX) * 3;
-  //   carouselRef.current.scrollLeft = scrollLeft - walk;
-  // };
+  const handleTouchEnd = () => {
+    setIsDragging(false);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (!isDragging || !isLargeScreen) return;
+    e.preventDefault();
+    const x = e.touches[0].pageX;
+    const walk = (x - startX) * 3;
+    if (carouselRef.current) {
+      carouselRef.current.scrollLeft = scrollLeft - walk;
+    }
+  };
 
   const products: any[] = [
     {
@@ -85,49 +108,49 @@ export function Carousel() {
 
   if (!products.length) return null;
 
-  const carouselProducts = [...products, ...products, ...products]; // Extend product list for carousel loop
+  const carouselProducts = [...products, ...products, ...products];
 
   return (
     <ul
       ref={carouselRef}
       className="flex gap-4 items-center overflow-x-auto w-full cursor-pointer"
-      // onMouseDown={handleMouseDown}
-      // onMouseLeave={handleMouseLeave}
-      // onMouseUp={handleMouseUp}
-      // onMouseMove={handleMouseMove}
-      // onTouchStart={handleTouchStart}
-      // onTouchEnd={handleTouchEnd}
-      // onTouchMove={handleTouchMove}
+      onMouseDown={handleMouseDown}
+      onMouseLeave={handleMouseLeave}
+      onMouseUp={handleMouseUp}
+      onMouseMove={handleMouseMove}
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
+      onTouchMove={handleTouchMove}
       style={{
         scrollbarWidth: "none",
         msOverflowStyle: "none",
-        scrollSnapType: "x mandatory", // Snap horizontally
-        scrollBehavior: "smooth", // Smooth scroll
+        scrollSnapType: "x mandatory",
+        scrollBehavior: "smooth",
       }}
     >
-      {carouselProducts.map((src, index) => (
+      {carouselProducts.map((product, index) => (
         <li
           key={index}
           className="flex-shrink-0"
           style={{
-            scrollSnapAlign: "center", // Each image will snap to the center
+            scrollSnapAlign: "center",
           }}
         >
-          <h1 className="text-2xl pb-2">{src.type}</h1>
-          <ImageCard src={src.src} />
+          <h1 className="text-2xl pb-2">{product.type}</h1>
+          <ImageCard src={product.src} />
         </li>
       ))}
     </ul>
   );
 }
 
-function ImageCard({ src }: { src: any }) {
+function ImageCard({ src }: { src: string }) {
   return (
     <div className="relative aspect-w-16 aspect-h-9">
       <img
         src={src}
         alt=""
-        className=" inset-0 w-96 h-96 object-cover rounded-lg"
+        className="inset-0 w-96 h-96 object-cover rounded-lg"
       />
     </div>
   );
