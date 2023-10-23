@@ -8,6 +8,9 @@
     "start": "next start"
   },
   "dependencies": {
+    "@heroicons/react": "^2.0.18",
+    "@tabler/icons": "^2.39.0",
+    "@tabler/icons-react": "^2.39.0",
     "lottie-react": "^2.4.0",
     "next": "13.5.4",
     "next-themes": "^0.2.1",

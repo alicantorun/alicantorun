@@ -48,7 +48,7 @@ const ChatBubble: FC<ChatBubbleProps> = ({ messages, isUser }) => {
           <div
             key={idx}
             className={`p-4 rounded-2xl mb-2 text-left ${
-              isUser ? "bg-blue-500 text-white" : "bg-gray-200 text-black"
+              isUser ? "bg-black text-white" : "bg-gray-200 text-black"
             }`}
           >
             {message.split("\n").map((str, index, array) => (
