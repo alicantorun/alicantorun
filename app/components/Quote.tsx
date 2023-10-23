@@ -11,7 +11,7 @@ export default function BannerOne() {
             Alican Torun, founder of Bytehopper.ai
           </h3>
         </div>
-        <div className="p-4 text-left flex-1 bg-[#F9FAFB] lg:shadow-lg lg:rounded-r-xl">
+        <div className="p-4 lg:py-8 text-left flex-1 bg-[#F9FAFB] lg:shadow-lg lg:rounded-r-xl">
           <h3 className="mb-4 font-extrabold text-xl">Totally async</h3>
           <p className="mb-4">
             Don't like meetings? We don't either; so much so that we've outlawed
