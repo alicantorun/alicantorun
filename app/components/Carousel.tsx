@@ -9,45 +9,45 @@ export function Carousel() {
   const [scrollLeft, setScrollLeft] = useState(0);
   const carouselRef = useRef(null);
 
-  const handleMouseDown = (e) => {
-    setIsDragging(true);
-    setStartX(e.pageX - carouselRef.current.offsetLeft);
-    setScrollLeft(carouselRef.current.scrollLeft);
-  };
+  // const handleMouseDown = (e) => {
+  //   setIsDragging(true);
+  //   setStartX(e.pageX - carouselRef.current.offsetLeft);
+  //   setScrollLeft(carouselRef.current.scrollLeft);
+  // };
 
-  const handleMouseLeave = () => {
-    setIsDragging(false);
-  };
+  // const handleMouseLeave = () => {
+  //   setIsDragging(false);
+  // };
 
-  const handleMouseUp = () => {
-    setIsDragging(false);
-  };
+  // const handleMouseUp = () => {
+  //   setIsDragging(false);
+  // };
 
-  const handleMouseMove = (e) => {
-    if (!isDragging) return;
-    e.preventDefault();
-    const x = e.pageX - carouselRef.current.offsetLeft;
-    const walk = (x - startX) * 3; // scroll-fast
-    carouselRef.current.scrollLeft = scrollLeft - walk;
-  };
+  // const handleMouseMove = (e) => {
+  //   if (!isDragging) return;
+  //   e.preventDefault();
+  //   const x = e.pageX - carouselRef.current.offsetLeft;
+  //   const walk = (x - startX) * 3; // scroll-fast
+  //   carouselRef.current.scrollLeft = scrollLeft - walk;
+  // };
 
-  const handleTouchStart = (e) => {
-    setIsDragging(true);
-    setStartX(e.touches[0].pageX);
-    setScrollLeft(carouselRef.current.scrollLeft);
-  };
+  // const handleTouchStart = (e) => {
+  //   setIsDragging(true);
+  //   setStartX(e.touches[0].pageX);
+  //   setScrollLeft(carouselRef.current.scrollLeft);
+  // };
 
-  const handleTouchEnd = () => {
-    setIsDragging(false);
-  };
+  // const handleTouchEnd = () => {
+  //   setIsDragging(false);
+  // };
 
-  const handleTouchMove = (e) => {
-    if (!isDragging) return;
-    e.preventDefault(); // Prevent default touch move behavior
-    const x = e.touches[0].pageX;
-    const walk = (x - startX) * 3;
-    carouselRef.current.scrollLeft = scrollLeft - walk;
-  };
+  // const handleTouchMove = (e) => {
+  //   if (!isDragging) return;
+  //   e.preventDefault(); // Prevent default touch move behavior
+  //   const x = e.touches[0].pageX;
+  //   const walk = (x - startX) * 3;
+  //   carouselRef.current.scrollLeft = scrollLeft - walk;
+  // };
 
   const products: any[] = [
     {
