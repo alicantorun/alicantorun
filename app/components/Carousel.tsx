@@ -4,26 +4,31 @@ import Image from "next/image";
 import { useRef, useState } from "react";
 
 export function Carousel() {
-  const carouselRef = useRef<HTMLDivElement>(null);
-  const [isDragging, setIsDragging] = useState<boolean>(false);
-  const [startX, setStartX] = useState<number>(0);
-  const [scrollLeft, setScrollLeft] = useState<number>(0);
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [scrollLeft, setScrollLeft] = useState(0);
+  const carouselRef = useRef(null);
 
-  const handleDragStart = (clientX: number) => {
+  const handleMouseDown = (e) => {
     setIsDragging(true);
-    setStartX(clientX);
-    setScrollLeft(carouselRef.current!.scrollLeft);
+    setStartX(e.pageX - carouselRef.current.offsetLeft);
+    setScrollLeft(carouselRef.current.scrollLeft);
   };
 
-  const handleDragMove = (clientX: number) => {
-    if (!isDragging) return;
-    const x = clientX;
-    const distance = x - startX;
-    carouselRef.current!.scrollLeft = scrollLeft - distance;
-  };
-
-  const handleDragEnd = () => {
+  const handleMouseLeave = () => {
     setIsDragging(false);
+  };
+
+  const handleMouseUp = () => {
+    setIsDragging(false);
+  };
+
+  const handleMouseMove = (e) => {
+    if (!isDragging) return;
+    e.preventDefault();
+    const x = e.pageX - carouselRef.current.offsetLeft;
+    const walk = (x - startX) * 3; // scroll-fast
+    carouselRef.current.scrollLeft = scrollLeft - walk;
   };
 
   const products: any[] = [
@@ -65,38 +70,32 @@ export function Carousel() {
   const carouselProducts = [...products, ...products, ...products]; // Extend product list for carousel loop
 
   return (
-    <div
-      className="w-full pb-8 mb-8 overflow-x-hidden"
+    <ul
       ref={carouselRef}
-      onMouseDown={(e) => handleDragStart(e.clientX)}
-      onMouseMove={(e) => handleDragMove(e.clientX)}
-      onMouseUp={handleDragEnd}
-      onMouseLeave={handleDragEnd}
-      onTouchStart={(e) => handleDragStart(e.touches[0].clientX)}
-      onTouchMove={(e) => {
-        e.preventDefault();
-        handleDragMove(e.touches[0].clientX);
-      }}
-      onTouchEnd={handleDragEnd}
+      className="flex gap-4 items-center overflow-x-auto w-full cursor-pointer"
+      onMouseDown={handleMouseDown}
+      onMouseLeave={handleMouseLeave}
+      onMouseUp={handleMouseUp}
+      onMouseMove={handleMouseMove}
     >
-      <ul className="flex ml-4 lg:animate-carousel gap-4">
-        {carouselProducts.map((product, i) => (
-          <li
-            key={`${product.handle}${i}`}
-            className="relative aspect-square max-h-[400px] max-w-[475px] w-2/3  flex-none"
-          >
-            <h1 className="text-2xl pb-2">{product.type}</h1>
-            <Image
-              draggable="false"
-              className="relative object-cover h-full w-full rounded-xl shadow-lg cursor-pointer"
-              src={product.src}
-              alt={product.alt}
-              width="1920"
-              height="1080"
-            />
-          </li>
-        ))}
-      </ul>
+      {carouselProducts.map((src, index) => (
+        <li key={index} className="flex-shrink-0">
+          <h1 className="text-2xl pb-2">{src.type}</h1>
+          <ImageCard src={src.src} />
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+function ImageCard({ src }: { src: any }) {
+  return (
+    <div className="relative aspect-w-16 aspect-h-9">
+      <img
+        src={src}
+        alt=""
+        className=" inset-0 w-96 h-96 object-cover rounded-lg"
+      />
     </div>
   );
 }

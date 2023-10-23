@@ -46,3 +46,7 @@ html {
     ); /* Move by one-third, since we have three copies of the product array */
   }
 }
+
+ul::-webkit-scrollbar {
+  display: none;
+}
