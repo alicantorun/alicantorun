@@ -45,7 +45,7 @@ export default function MembershipLevels() {
               Payments via Stripe
             </li>
           </ol>
-          <button className=" lg:mr-4 text-xl px-8 py-4 rounded-full bg-black text-white">
+          <button className=" lg:mr-4 text-xl px-8 py-4 rounded-full bg-black text-white shadow-lg hover:bg-slate-700">
             Pay for standard
           </button>
         </div>
@@ -87,7 +87,7 @@ export default function MembershipLevels() {
               Payments via Stripe
             </li>
           </ol>
-          <button className=" lg:mr-4 text-xl px-8 py-4 rounded-full bg-black text-white">
+          <button className=" lg:mr-4 text-xl px-8 py-4 rounded-full bg-black text-white shadow-lg hover:bg-slate-700">
             Pay for pro
           </button>
         </div>
@@ -115,7 +115,7 @@ export default function MembershipLevels() {
             Async Slack communication&support
           </li>
         </ol>
-        <button className=" lg:mr-4 text-xl px-8 py-4 rounded-full bg-black text-white">
+        <button className=" lg:mr-4 text-xl px-8 py-4 rounded-full bg-black text-white shadow-lg hover:bg-slate-700">
           Schedule a call
         </button>
       </div>

@@ -49,7 +49,7 @@ export default function BannerOne() {
           style={{ width: "20%", height: "100px" }}
         >
           <img
-            src="/antler.jpg"
+            src="/antler.png"
             alt=""
             className="rounded-lg flex-none mx-1 object-contain"
             style={{ width: "100%", height: "100px" }}

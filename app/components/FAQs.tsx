@@ -64,16 +64,18 @@ const FAQ = [
 
 export default function FAQs() {
   return (
-    <div className="text-center max-w-5xl w-full items-center justify-between   mb-12 lg:mb-24 bg-white rounded-2xl shadow-lg">
-      <h1 className="mb-4 text-4xl font-extrabold">FAQs</h1>
-      {FAQ.map((item, index) => (
-        <AccordionItem
-          key={index}
-          title={item.title}
-          content={item.content}
-          isLast={index === FAQ.length - 1}
-        />
-      ))}
-    </div>
+    <>
+      {/* <h1 className="mb-4 text-4xl font-extrabold">FAQs</h1> */}
+      <div className="text-center max-w-5xl items-center justify-between m-4  mb-12 lg:mb-24 bg-white rounded-2xl shadow-lg">
+        {FAQ.map((item, index) => (
+          <AccordionItem
+            key={index}
+            title={item.title}
+            content={item.content}
+            isLast={index === FAQ.length - 1}
+          />
+        ))}
+      </div>
+    </>
   );
 }

@@ -16,9 +16,9 @@ const AccordionItem: FC<AccordionItemProps> = ({
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className={`border-b ${isLast ? " rounded-b-2xl" : "mb-4"}`}>
+    <div className={`border-b ${isLast ? " rounded-b-2xl" : ""}`}>
       <div
-        className="p-4 cursor-pointer flex justify-between items-center"
+        className="px-4 py-6 cursor-pointer flex justify-between items-center"
         onClick={() => setIsOpen(!isOpen)}
       >
         <p className="font-bold text-left">{title}</p>

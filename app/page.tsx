@@ -18,22 +18,22 @@ import References from "./components/References";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center lg:pt-6 transition-colors duration-500  dark:bg-black dark:text-white">
+    <main className="flex min-h-screen flex-col items-center transition-colors duration-500  dark:bg-black dark:text-white">
       {/* <Header /> */}
       <Hero />
       <References />
-      <Carousel />
+      {/* <Carousel /> */}
       <Chat />
       {/* <BannerThree /> */}
       <HowCanWeHelp />
-      <BannerTwo />
+      {/* <BannerTwo /> */}
       <Quote />
-      <Membership />
-      <BannerFour />
-      <Services />
+      {/* <Membership /> */}
+      {/* <BannerFour /> */}
+      {/* <Services /> */}
       <MembershipLevels />
       <FAQs />
-      <Footer />
+      {/* <Footer /> */}
     </main>
   );
 }
