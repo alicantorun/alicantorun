@@ -25,11 +25,11 @@ body {
     )
     rgb(var(--background-start-rgb));
 
-  background-color: #ffffff;
+  /* background-color: #ffffff;
   background-image: radial-gradient(#dbdbdb 1px, transparent 1px),
     radial-gradient(#dbdbdb 1px, #ffffff 1px);
   background-size: 24px 24px;
-  background-position: 0 0, 12px 12px;
+  background-position: 0 0, 12px 12px; */
 }
 
 html {

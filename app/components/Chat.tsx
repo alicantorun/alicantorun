@@ -1,8 +1,12 @@
-import React, { FC } from "react";
+"use client";
+
+import React, { FC, useEffect, useState } from "react";
+import { useInView } from "react-intersection-observer";
 
 interface ChatBubbleProps {
   messages: string[];
   isUser: boolean;
+  position: "left" | "right";
 }
 
 const dummyMessages: { content: string; isUser: boolean }[] = [
@@ -36,7 +40,70 @@ const dummyMessages: { content: string; isUser: boolean }[] = [
   },
 ];
 
-const ChatBubble: FC<ChatBubbleProps> = ({ messages, isUser }) => {
+interface MessageProps {
+  message: string;
+  isUser: boolean;
+  position: "left" | "right";
+  idx: number;
+  onInViewChange?: (inView: boolean) => void; // New prop
+}
+
+const Message: FC<MessageProps> = ({
+  onInViewChange,
+  message,
+  isUser,
+  position,
+  idx,
+}) => {
+  const [inViewRef, inView] = useInView({
+    triggerOnce: true,
+    threshold: 1,
+  });
+
+  useEffect(() => {
+    if (onInViewChange) {
+      onInViewChange(inView);
+    }
+  }, [inView, onInViewChange]);
+
+  const animationClass = inView
+    ? position === "left"
+      ? "animate-slideFromLeft opacity-100"
+      : "animate-slideFromRight opacity-100"
+    : "opacity-0";
+
+  return (
+    <div
+      ref={inViewRef}
+      className={`${animationClass} opacity-0 delay-${
+        idx * 200
+      } p-4 rounded-2xl mb-2 text-left ${
+        isUser ? "bg-black text-white" : "bg-gray-200 text-black"
+      }`}
+    >
+      {message.split("\n").map((str, index, array) => (
+        <React.Fragment key={index}>
+          {str}
+          {index === array.length - 1 ? null : <br />}
+        </React.Fragment>
+      ))}
+    </div>
+  );
+};
+
+const ChatBubble: FC<ChatBubbleProps> = ({ messages, isUser, position }) => {
+  const [avatarInView, setAvatarInView] = useState(false);
+
+  const handleInViewChange = (inView: boolean) => {
+    setAvatarInView(inView);
+  };
+
+  const avatarAnimationClass = avatarInView
+    ? position === "left"
+      ? "animate-slideFromLeft opacity-100"
+      : "animate-slideFromRight opacity-100"
+    : "opacity-0";
+
   return (
     <div
       className={`flex mt-4 ${
@@ -45,24 +112,19 @@ const ChatBubble: FC<ChatBubbleProps> = ({ messages, isUser }) => {
     >
       <div className={`flex flex-col lg:max-w-[50%]`}>
         {messages.map((message, idx) => (
-          <div
+          <Message
             key={idx}
-            className={`p-4 rounded-2xl mb-2 text-left ${
-              isUser ? "bg-black text-white" : "bg-gray-200 text-black"
-            }`}
-          >
-            {message.split("\n").map((str, index, array) => (
-              <React.Fragment key={index}>
-                {str}
-                {index === array.length - 1 ? null : <br />}
-              </React.Fragment>
-            ))}
-          </div>
+            message={message}
+            isUser={isUser}
+            position={position}
+            idx={idx}
+            onInViewChange={handleInViewChange} // Pass the callback
+          />
         ))}
         <img
           className={`w-10 h-10 rounded-full ${
             isUser ? "self-end" : "self-start"
-          }`}
+          } ${avatarAnimationClass}`}
           src={
             isUser
               ? "https://media.licdn.com/dms/image/C4D03AQFhmD6Fh-F6mA/profile-displayphoto-shrink_800_800/0/1585155744112?e=1703116800&v=beta&t=Bsf3faCcQsBwteO6FZ1TKwvf1s9vmGWOq-ZTFWOv3Lg"
@@ -88,12 +150,12 @@ const Chat: FC<ChatProps> = ({ messages = dummyMessages }) => {
     .map((msg) => msg.content);
 
   return (
-    <div className="text-center max-w-5xl mx-4 items-center justify-between mb-12 lg:mb-24 bg-[#F9FAFB] p-4 rounded-xl shadow-lg">
+    <div className="text-center max-w-5xl mx-4 items-center justify-between mb-12 lg:mb-24 bg-[#F5F5F7] p-4 rounded-xl ">
       {otherMessages.length > 0 && (
-        <ChatBubble messages={otherMessages} isUser={false} />
+        <ChatBubble position="left" messages={otherMessages} isUser={false} />
       )}
       {userMessages.length > 0 && (
-        <ChatBubble messages={userMessages} isUser={true} />
+        <ChatBubble position="right" messages={userMessages} isUser={true} />
       )}
     </div>
   );

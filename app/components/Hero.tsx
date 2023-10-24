@@ -4,7 +4,7 @@ export default function Hero() {
   return (
     <div className="lg:mt-8 mb-24 text-center max-w-5xl w-full items-center justify-between p-4 pb-0">
       <img
-        className="py-2 mb-4 object-scale-down lg:h-32 h-24"
+        className="py-2 mb-8 object-scale-down lg:h-32 h-24"
         src="/bytehopper.png"
       />
       <h1 className="text-left text-5xl lg:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-black dark:from-purple-600 dark:to-white ">
@@ -18,7 +18,7 @@ export default function Hero() {
         solutions that enhance efficiency. For companies utilizing +$10,000/mo
         in software tools.
       </h3>
-      <h3 className="text-left mb-8 text-xl">
+      <h3 className="text-left mb-4 text-xl">
         By people who built & sold SaaS companies, through SEO.
       </h3>
       <div className="mb-8 lg:p-4 flex flex-col lg:block">

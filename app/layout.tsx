@@ -1,10 +1,10 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import { Bricolage_Grotesque } from "next/font/google";
+import { Montserrat } from "next/font/google";
 
 import { ThemeProvider } from "@/app/components/providers";
 
-const inter = Bricolage_Grotesque({ subsets: ["latin"] });
+const inter = Montserrat({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Create Next App",

@@ -2,9 +2,9 @@ import React from "react";
 
 export default function BannerOne() {
   return (
-    <div className="text-center max-w-5xl w-full mb-12 lg:mb-24 px-4">
+    <div className="text-center max-w-5xl w-full mb-12 lg:mb-24 px-8">
       <h1 className="mb-4 text-4xl font-extrabold w-full">References</h1>
-      <div className="grid lg:grid-cols-4 grid-cols-2 gap-4">
+      <div className="grid lg:grid-cols-4 grid-cols-2 gap-8">
         <ReferenceLink
           href="https://klepierre.com"
           imgSrc="/klepierre.png"
@@ -34,7 +34,7 @@ const ReferenceLink: React.FC<ReferenceLinkProps> = ({ href, imgSrc, alt }) => {
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="h-24 p-4 w-full flex items-center justify-center"
+      className="h-24 p-4 pb-0 pt-0 w-full flex items-center justify-center"
     >
       <img
         src={imgSrc}

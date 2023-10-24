@@ -15,6 +15,7 @@ import { Carousel } from "./components/Carousel";
 import { Chat } from "./components/Chat";
 import HowCanWeHelp from "./components/HowCanWeHelp";
 import References from "./components/References";
+import { FreeConsultation } from "./components/FreeConsultation";
 
 export default function Home() {
   return (
@@ -24,6 +25,7 @@ export default function Home() {
       <References />
       {/* <Carousel /> */}
       <Chat />
+      <FreeConsultation />
       {/* <BannerThree /> */}
       <HowCanWeHelp />
       {/* <BannerTwo /> */}
