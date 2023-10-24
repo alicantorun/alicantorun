@@ -31,7 +31,7 @@ export function BannerThree() {
 
   return (
     <div
-      className="w-full overflow-x-hidden  shadow-md bg-white mb-8 lg:mb-24"
+      className="w-full overflow-x-hidden  shadow-lg bg-white mb-8 lg:mb-24"
       ref={carouselRef}
     >
       <ul className="flex gap-4 justify-center align-middle p-8">

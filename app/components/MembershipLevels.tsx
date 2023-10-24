@@ -45,9 +45,14 @@ export default function MembershipLevels() {
               Payments via Stripe
             </li>
           </ol>
-          <button className=" lg:mr-4 text-xl px-8 py-4 rounded-full bg-black text-white shadow-lg hover:bg-slate-700">
+          <a
+            href={"https://buy.stripe.com/test_3cs8x09eecTmdc4288"}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="lg:mr-4 text-xl px-8 py-4 rounded-full bg-black text-white shadow-lg hover:bg-slate-700"
+          >
             Pay for standard
-          </button>
+          </a>
         </div>
         <div className="p-8  lg:mb-0 lg:ml-4 flex-1 border-black dark:border-white  flex-col justify-center rounded-2xl bg-white shadow-lg">
           <h3 className="text-start text-4xl mb-4 font-bold">Pro</h3>
@@ -87,9 +92,14 @@ export default function MembershipLevels() {
               Payments via Stripe
             </li>
           </ol>
-          <button className=" lg:mr-4 text-xl px-8 py-4 rounded-full bg-black text-white shadow-lg hover:bg-slate-700">
+          <a
+            href={"https://buy.stripe.com/test_28o28Ccqqg5y5JC3cd"}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="lg:mr-4 text-xl px-8 py-4 rounded-full bg-black text-white shadow-lg hover:bg-slate-700"
+          >
             Pay for pro
-          </button>
+          </a>
         </div>
       </div>
       <div className="p-8 flex-1 border-black dark:border-white  flex-col justify-center rounded-2xl bg-white shadow-lg">
