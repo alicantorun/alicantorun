@@ -18,6 +18,8 @@ import {
     Timer,
     CheckCircle,
 } from "lucide-react";
+import { Card, CardContent, CardHeader } from "./ui/card";
+import { Button } from "./ui/button";
 
 export const WhenWorkWithUs = () => {
     const [isToggled, setIsToggled] = useState(false);
@@ -26,6 +28,8 @@ export const WhenWorkWithUs = () => {
         false: {
             text: "don't",
             color: "text-red-500",
+            bgColor: "bg-red-100",
+
             items: [
                 {
                     icon: Zap,
@@ -68,6 +72,8 @@ export const WhenWorkWithUs = () => {
         true: {
             text: "do",
             color: "text-blue-500",
+            bgColor: "bg-blue-100",
+
             items: [
                 {
                     icon: Pencil,
@@ -139,28 +145,50 @@ export const WhenWorkWithUs = () => {
                 <AnimatePresence mode="wait">
                     <motion.div
                         key={isToggled ? "toggled" : "untoggled"}
-                        initial={{ opacity: 0, x: 20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        exit={{ opacity: 0, x: -20 }}
-                        transition={{ duration: 0.2, ease: "easeInOut" }}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -20 }}
+                        transition={{ duration: 0.3, ease: "easeInOut" }}
                     >
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                             {toggleData[isToggled ? "true" : "false"].items.map(
                                 (item, index) => (
-                                    <div
+                                    <Card
                                         key={index}
-                                        className="bg-white p-6 rounded-lg shadow-md"
+                                        className="overflow-hidden"
                                     >
-                                        <div className="text-4xl mb-4">
-                                            <item.icon className="w-12 h-12 text-blue-500" />
-                                        </div>
-                                        <h2 className="text-xl font-semibold mb-2">
-                                            {item.title}
-                                        </h2>
-                                        <p className="text-gray-600">
-                                            {item.description}
-                                        </p>
-                                    </div>
+                                        <CardHeader>
+                                            <div className="flex items-center mb-4">
+                                                <div
+                                                    className={`${
+                                                        toggleData[
+                                                            isToggled
+                                                                ? "true"
+                                                                : "false"
+                                                        ].bgColor
+                                                    } w-12 h-12 rounded-full flex items-center justify-center mr-4`}
+                                                >
+                                                    <item.icon
+                                                        className={`w-6 h-6 ${
+                                                            toggleData[
+                                                                isToggled
+                                                                    ? "true"
+                                                                    : "false"
+                                                            ].color
+                                                        }`}
+                                                    />
+                                                </div>
+                                                <h2 className="text-xl font-semibold">
+                                                    {item.title}
+                                                </h2>
+                                            </div>
+                                        </CardHeader>
+                                        <CardContent>
+                                            <p className="text-gray-600">
+                                                {item.description}
+                                            </p>
+                                        </CardContent>
+                                    </Card>
                                 )
                             )}
                         </div>
@@ -168,9 +196,7 @@ export const WhenWorkWithUs = () => {
                 </AnimatePresence>
 
                 <div className="mt-12 text-center">
-                    <button className="bg-blue-600 text-white px-6 py-3 rounded-full text-lg font-semibold hover:bg-blue-700 transition-colors duration-300">
-                        Start Your MVP Journey
-                    </button>
+                    <Button size="lg">Start Your MVP Journey</Button>
                 </div>
             </div>
         </Section>

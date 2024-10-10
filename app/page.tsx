@@ -203,6 +203,7 @@ const HowItWorks = () => {
                 "We discuss your idea and create a detailed product roadmap.",
             icon: MessageCircle,
             iconColor: "text-blue-500",
+            bgColor: "bg-blue-100",
         },
         {
             title: "Develop",
@@ -210,42 +211,47 @@ const HowItWorks = () => {
                 "Our team builds and launches the first version in 2-4 weeks.",
             icon: Code,
             iconColor: "text-green-500",
+            bgColor: "bg-green-100",
         },
         {
             title: "Iterate",
             description: "We continuously improve based on real user feedback.",
             icon: RefreshCw,
             iconColor: "text-purple-500",
+            bgColor: "bg-purple-100",
         },
     ];
 
     return (
         <Section id="how-it-works">
             <SectionTitle>How We Build Your MVP</SectionTitle>
-            <div className="grid md:grid-cols-3 gap-8">
+            <div className="grid md:grid-cols-3 gap-8 mb-12">
                 {steps.map((step, index) => (
-                    <div
-                        key={index}
-                        className="flex flex-col items-center text-center"
-                    >
-                        <div className="mb-4 bg-gray-100 rounded-full p-4">
-                            <step.icon
-                                className={`w-6 h-6 ${step.iconColor}`}
-                            />
-                        </div>
-                        <h3 className="text-xl font-semibold mb-2">
-                            {step.title}
-                        </h3>
-                        <p className="text-gray-600">{step.description}</p>
-                    </div>
+                    <Card key={index} className="overflow-hidden">
+                        <CardHeader className="pb-2">
+                            <div
+                                className={`${step.bgColor} w-12 h-12 rounded-full flex items-center justify-center mb-4`}
+                            >
+                                <step.icon
+                                    className={`w-6 h-6 ${step.iconColor}`}
+                                />
+                            </div>
+                            <h3 className="text-xl font-semibold">
+                                {step.title}
+                            </h3>
+                        </CardHeader>
+                        <CardContent>
+                            <p className="text-gray-600">{step.description}</p>
+                        </CardContent>
+                    </Card>
                 ))}
             </div>
-            <p className="text-lg text-center max-w-2xl mx-auto">
-                Launch your web app without the hassle of hiring a full team or
-                sacrificing equity. We handle everything so you can focus on
-                growing your business and validating your idea faster.
-            </p>
-            <div className="text-center">
+            <div className="text-center max-w-2xl mx-auto">
+                <p className="text-lg mb-6">
+                    Launch your web app without the hassle of hiring a full team
+                    or sacrificing equity. We handle everything so you can focus
+                    on growing your business and validating your idea faster.
+                </p>
                 <Button size="lg" className="mt-4">
                     Start Your MVP Journey
                 </Button>
@@ -282,23 +288,31 @@ const Benefits = () => {
             title: "Rapid Development",
             description: "Your MVP ready in just 2-4 weeks.",
             icon: Zap,
+            iconColor: "text-yellow-500",
+            bgColor: "bg-yellow-100",
         },
         {
             title: "Cost-Effective",
             description:
                 "Save up to 75% compared to traditional development costs.",
             icon: DollarSign,
+            iconColor: "text-green-500",
+            bgColor: "bg-green-100",
         },
         {
             title: "Experienced Team",
             description: "Access senior developers with startup experience.",
             icon: Users,
+            iconColor: "text-blue-500",
+            bgColor: "bg-blue-100",
         },
         {
             title: "Flexible & Scalable",
             description:
                 "Start small and scale as you grow, with no long-term commitments.",
             icon: Maximize,
+            iconColor: "text-purple-500",
+            bgColor: "bg-purple-100",
         },
     ];
 
@@ -307,7 +321,27 @@ const Benefits = () => {
             <SectionTitle>Why Choose Bolt ⚡ Studio for Your MVP</SectionTitle>
             <div className="grid md:grid-cols-2 gap-8">
                 {benefits.map((benefit, index) => (
-                    <FeatureCard key={index} {...benefit} />
+                    <Card key={index} className="overflow-hidden">
+                        <CardHeader>
+                            <div className="flex items-center">
+                                <div
+                                    className={`${benefit.bgColor} w-12 h-12 rounded-full flex items-center justify-center mr-4`}
+                                >
+                                    <benefit.icon
+                                        className={`w-6 h-6 ${benefit.iconColor}`}
+                                    />
+                                </div>
+                                <h3 className="text-xl font-semibold">
+                                    {benefit.title}
+                                </h3>
+                            </div>
+                        </CardHeader>
+                        <CardContent>
+                            <p className="text-gray-600">
+                                {benefit.description}
+                            </p>
+                        </CardContent>
+                    </Card>
                 ))}
             </div>
         </Section>
