@@ -37,11 +37,71 @@ import {
     ListItem,
     Section,
     SectionTitle,
+    SectionSubtitle,
 } from "@/components/section";
 import { ContactForm } from "@/components/contact-form";
 import { AnimatedListDemo } from "@/components/problem-list";
 
 const Hero = () => (
+    <Section className="flex flex-col md:flex-row items-center">
+        <Container>
+            <div className="space-y-6">
+                <H1>
+                    Launch Your MVP in{" "}
+                    <span className="text-blue-600">4 Weeks</span>
+                    <br />
+                    <span className="text-3xl sm:text-4xl text-gray-600">
+                        Without Breaking the Bank
+                    </span>
+                </H1>
+                <Lead className="text-lg sm:text-xl">
+                    Transform your startup idea into a market-ready MVP. Our
+                    experienced team builds and launches your product in just
+                    2-4 weeks, so you can start validating faster.
+                </Lead>
+                <div className="flex flex-col sm:flex-row gap-4">
+                    <Button size="lg" className="space-x-2 w-full sm:w-auto">
+                        <span>Schedule Free Consultation</span>
+                        <Icon name="ArrowRight" className="w-5 h-5" />
+                    </Button>
+                    <Button
+                        variant="outline"
+                        size="lg"
+                        className="w-full sm:w-auto"
+                    >
+                        View Pricing
+                    </Button>
+                </div>
+                <List className="text-sm mt-4">
+                    {[
+                        {
+                            icon: "Zap",
+                            text: "First MVP in 2 weeks, iterations in the next 2 weeks",
+                        },
+                        {
+                            icon: "Check",
+                            text: "Focused on core MVP needs, no inflated requirements",
+                        },
+                        {
+                            icon: "ListTodo",
+                            text: "Direct accountability - work with builders, not sales reps",
+                        },
+                    ].map((item, index) => (
+                        <ListItem key={index} className="flex items-start">
+                            <Icon
+                                name={item.icon}
+                                className="w-4 h-4 mr-2 text-yellow-500 flex-shrink-0 mt-1"
+                            />
+                            <span>{item.text}</span>
+                        </ListItem>
+                    ))}
+                </List>
+            </div>
+        </Container>
+    </Section>
+);
+
+const Hero3 = () => (
     <Section className="flex flex-col md:flex-row items-center">
         <Container>
             <div className="space-y-6">
@@ -175,6 +235,9 @@ const TrustedBy = () => {
     return (
         <Section id="trusted-by">
             <SectionTitle>Trusted by Innovative Startups</SectionTitle>
+            <SectionSubtitle>
+                Join the ranks of successful startups who've launched with us
+            </SectionSubtitle>
             <div className="relative overflow-hidden">
                 <div className="fade-edge-overlay"></div>
                 <div className="flex animate-scroll">
@@ -225,6 +288,9 @@ const HowItWorks = () => {
     return (
         <Section id="how-it-works">
             <SectionTitle>How We Build Your MVP</SectionTitle>
+            <SectionSubtitle>
+                Our streamlined process gets your product to market fast
+            </SectionSubtitle>
             <div className="grid md:grid-cols-3 gap-8 mb-12">
                 {steps.map((step, index) => (
                     <Card key={index} className="overflow-hidden">
@@ -319,6 +385,9 @@ const Benefits = () => {
     return (
         <Section id="benefits">
             <SectionTitle>Why Choose Bolt ⚡ Studio for Your MVP</SectionTitle>
+            <SectionSubtitle>
+                Unmatched advantages for your startup journey
+            </SectionSubtitle>
             <div className="grid md:grid-cols-2 gap-8">
                 {benefits.map((benefit, index) => (
                     <Card key={index} className="overflow-hidden">
@@ -370,6 +439,9 @@ const Services = () => {
     return (
         <Section id="services">
             <SectionTitle>Our MVP Development Services</SectionTitle>
+            <SectionSubtitle>
+                Comprehensive solutions to bring your vision to life
+            </SectionSubtitle>
             <div className="grid md:grid-cols-3 gap-8">
                 {services.map((service, index) => (
                     <FeatureCard key={index} {...service} icon={Code} />
@@ -488,10 +560,10 @@ const Pricing = () => {
     return (
         <Section id="pricing" className="max-w-4xl mx-auto">
             <SectionTitle>Transparent Pricing, No Surprises</SectionTitle>
-            <p className="text-xl text-center">
+            <SectionSubtitle>
                 Fixed monthly rate with the flexibility to cancel anytime. Get a
                 full product team at a fraction of the cost.
-            </p>
+            </SectionSubtitle>
             <div className="grid md:grid-cols-2 gap-6">
                 {plans.map((plan, index) => (
                     <PricingCard
@@ -511,10 +583,10 @@ const PainPoints = () => (
             <div className="flex flex-col md:flex-row items-center gap-8">
                 <div className="md:w-1/2">
                     <SectionTitle>Common Startup Struggles</SectionTitle>
-                    <p className="text-xl mb-6">
+                    <SectionSubtitle>
                         Founders often face these challenges when building their
                         MVP:
-                    </p>
+                    </SectionSubtitle>
                     <ul className="list-disc list-inside space-y-2 mb-6">
                         <li>Delayed launches due to development issues</li>
                         <li>Overspending on features that aren't essential</li>
@@ -564,12 +636,10 @@ const FoundersAdvantage = () => {
     return (
         <Section id="founders-advantage">
             <SectionTitle>The Founder's Advantage</SectionTitle>
-            <h3 className="text-2xl font-semibold text-center">
-                Built By Founders, For Founders
-            </h3>
-            <p className="text-xl text-center">
-                Benefit from our firsthand experience in the startup trenches.
-            </p>
+            <SectionSubtitle>
+                Built By Founders, For Founders. Benefit from our firsthand
+                experience in the startup trenches.
+            </SectionSubtitle>
             <div className="grid md:grid-cols-2 gap-8">
                 {advantages.map((advantage, index) => (
                     <FeatureCard key={index} {...advantage} icon={Zap} />
@@ -816,7 +886,7 @@ export default function Home() {
             <main className="max-w-6xl mx-auto px-4 sm:px-6 py-12 space-y-24 mt-24">
                 <Hero />
                 {/* <Hero2 /> */}
-                <PainPoints /> {/* Add this line */}
+                <PainPoints />
                 <TrustedBy />
                 <HowItWorks />
                 <Benefits />
@@ -825,7 +895,7 @@ export default function Home() {
                 <Services />
                 <Pricing />
                 <FoundersAdvantage />
-                <FounderProfile /> {/* Add this line */}
+                <FounderProfile />
                 <Testimonials />
                 <FAQ />
                 <CTA />

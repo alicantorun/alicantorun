@@ -17,7 +17,7 @@ export const Section: React.FC<SectionProps> = ({
     children,
 }) => (
     <RevealWrapper>
-        <section id={id} className={cn("py-16 md:py-24", className)}>
+        <section id={id} className={cn("py-8 sm:py-16 md:py-24", className)}>
             {children}
         </section>
     </RevealWrapper>
@@ -34,12 +34,31 @@ export const SectionTitle: React.FC<SectionTitleProps> = ({
 }) => (
     <h2
         className={cn(
-            "text-4xl md:text-5xl font-bold text-center mb-8",
+            "text-4xl md:text-5xl font-bold text-center mb-4",
             className
         )}
     >
         {children}
     </h2>
+);
+
+interface SectionSubtitleProps {
+    children: React.ReactNode;
+    className?: string;
+}
+
+export const SectionSubtitle: React.FC<SectionSubtitleProps> = ({
+    children,
+    className,
+}) => (
+    <p
+        className={cn(
+            "text-2xl text-center text-gray-600 mt-4 mb-4 max-w-3xl mx-auto",
+            className
+        )}
+    >
+        {children}
+    </p>
 );
 
 interface CommonProps {

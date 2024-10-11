@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { Switch } from "@/components/ui/switch";
 import { motion, AnimatePresence } from "framer-motion";
-import { Section } from "./section";
+import { Section, SectionTitle, SectionSubtitle, Container } from "./section";
 import {
     Zap,
     X,
@@ -29,7 +29,6 @@ export const WhenWorkWithUs = () => {
             text: "don't",
             color: "text-red-500",
             bgColor: "bg-red-100",
-
             items: [
                 {
                     icon: Zap,
@@ -73,7 +72,6 @@ export const WhenWorkWithUs = () => {
             text: "do",
             color: "text-blue-500",
             bgColor: "bg-blue-100",
-
             items: [
                 {
                     icon: Pencil,
@@ -117,40 +115,38 @@ export const WhenWorkWithUs = () => {
 
     return (
         <Section id="when-work-with-us">
-            <div className="max-w-4xl mx-auto p-8">
-                <div className="mb-4">
-                    <h1 className="text-5xl font-bold text-center">
-                        When startups
-                    </h1>
-                </div>
-
-                <div className="flex items-center justify-center mb-12">
-                    <h1 className="text-5xl font-bold">
-                        <span
-                            className={`${
-                                toggleData[isToggled ? "true" : "false"].color
-                            } inline-flex items-center`}
-                        >
-                            {toggleData[isToggled ? "true" : "false"].text}{" "}
-                            <Switch
-                                checked={isToggled}
-                                onCheckedChange={setIsToggled}
-                                className="mx-4 scale-150"
-                            />
-                        </span>{" "}
-                        work with us.
-                    </h1>
-                </div>
+            <Container>
+                <SectionTitle className="text-left sm:text-center">
+                    When startups
+                    <br />
+                    <span
+                        className={`text-left ${
+                            toggleData[isToggled ? "true" : "false"].color
+                        } inline-flex items-center`}
+                    >
+                        {toggleData[isToggled ? "true" : "false"].text}{" "}
+                        <Switch
+                            checked={isToggled}
+                            onCheckedChange={setIsToggled}
+                            className="mx-4 scale-150"
+                        />
+                    </span>{" "}
+                    work with us.
+                </SectionTitle>
+                {/* <SectionSubtitle>
+                    See the difference when you choose to work with our expert
+                    team
+                </SectionSubtitle> */}
 
                 <AnimatePresence mode="wait">
                     <motion.div
                         key={isToggled ? "toggled" : "untoggled"}
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -20 }}
-                        transition={{ duration: 0.3, ease: "easeInOut" }}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: isToggled ? 100 : -100 }}
+                        transition={{ duration: 0.4, ease: "easeInOut" }}
                     >
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div className="grid md:grid-cols-3 gap-8">
                             {toggleData[isToggled ? "true" : "false"].items.map(
                                 (item, index) => (
                                     <Card
@@ -158,7 +154,7 @@ export const WhenWorkWithUs = () => {
                                         className="overflow-hidden"
                                     >
                                         <CardHeader>
-                                            <div className="flex items-center mb-4">
+                                            <div className="flex items-center">
                                                 <div
                                                     className={`${
                                                         toggleData[
@@ -178,9 +174,9 @@ export const WhenWorkWithUs = () => {
                                                         }`}
                                                     />
                                                 </div>
-                                                <h2 className="text-xl font-semibold">
+                                                <h3 className="text-xl font-semibold">
                                                     {item.title}
-                                                </h2>
+                                                </h3>
                                             </div>
                                         </CardHeader>
                                         <CardContent>
@@ -198,7 +194,7 @@ export const WhenWorkWithUs = () => {
                 <div className="mt-12 text-center">
                     <Button size="lg">Start Your MVP Journey</Button>
                 </div>
-            </div>
+            </Container>
         </Section>
     );
 };
