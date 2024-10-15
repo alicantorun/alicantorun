@@ -45,6 +45,7 @@ import {
     SectionTitle,
     SectionSubtitle,
     H3,
+    H2,
 } from "@/components/section";
 import { ContactForm } from "@/components/contact-form";
 import { AnimatedListDemo } from "@/components/problem-list";
@@ -650,6 +651,17 @@ const Timeline = () => {
         { week: "Ongoing", description: "Continuous improvement and scaling" },
     ];
 
+    const getFutureDate = (weeksFromNow: number) => {
+        const today = new Date();
+        const futureDate = new Date(
+            today.getTime() + weeksFromNow * 7 * 24 * 60 * 60 * 1000
+        );
+        return futureDate.toLocaleDateString("en-US", {
+            month: "long",
+            day: "numeric",
+        });
+    };
+
     return (
         <Section id="timeline">
             <Container>
@@ -670,7 +682,7 @@ const Timeline = () => {
                                     {item.week}
                                 </p>
                             </div>
-                            <div className="absolute left-1/2 top-1/2 w-4 h-4 bg-blue-500 rounded-full transform -translate-x-1/2 -translate-y-1/2" />
+                            <div className="absolute left-1/2 top-1/2 w-4 h-4 bg-white border-2 border-blue-500 rounded-full transform -translate-x-1/2 -translate-y-1/2" />
                             <div className="w-64 pl-8">
                                 <p className="text-gray-700 whitespace-pre-line">
                                     {item.description}
@@ -682,10 +694,14 @@ const Timeline = () => {
 
                 <div className="text-center mt-16">
                     <Lead>
-                        Start today and in just 4-6 weeks, you could have
+                        Start today and by{" "}
+                        <span className="text-blue-600 font-semibold">
+                            {getFutureDate(8)}
+                        </span>
+                        , you could have
                     </Lead>
-                    <H3 className="text-blue-600 mb-4">A Market-Ready MVP</H3>
-                    <Button size="lg" className="">
+                    <H3 className="text-blue-600 mb-8">A Market-Ready MVP</H3>
+                    <Button size="xl" className="">
                         Start Your MVP Journey
                     </Button>
                 </div>
