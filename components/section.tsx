@@ -131,7 +131,7 @@ export const Lead: React.FC<CommonProps> = ({
     ...props
 }) => (
     <p
-        className={cn("text-xl md:text-2xl text-gray-600 mb-8", className)}
+        className={cn("text-xl md:text-2xl text-gray-600 mb-4", className)}
         {...props}
     >
         {children}

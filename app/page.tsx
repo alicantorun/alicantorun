@@ -26,6 +26,12 @@ import {
     Database,
     Leaf,
     Shield,
+    Globe,
+    Brain,
+    Cog,
+    Palette,
+    Rocket,
+    Smartphone,
 } from "lucide-react";
 import { WhenWorkWithUs } from "@/components/when-work-with-us";
 import {
@@ -38,9 +44,13 @@ import {
     Section,
     SectionTitle,
     SectionSubtitle,
+    H3,
 } from "@/components/section";
 import { ContactForm } from "@/components/contact-form";
 import { AnimatedListDemo } from "@/components/problem-list";
+import TextReveal from "@/components/ui/text-reveal";
+import NumberTicker from "@/components/ui/number-ticker";
+// import { Timeline } from "@/components/timeline";
 
 const Hero = () => (
     <Section className="flex flex-col md:flex-row items-center">
@@ -157,21 +167,22 @@ const Hero3 = () => (
 );
 
 const Hero2 = () => (
-    <Section className="flex flex-col items-center">
+    <Section className="flex flex-col items-center ">
         <Container>
             <div className="space-y-6 text-center">
                 <H1>
-                    Launch Your MVP in{" "}
-                    <span className="text-blue-600">4 Weeks</span>
-                    <br />
-                    <span className="text-3xl sm:text-4xl text-gray-600">
-                        Without Breaking the Bank
+                    Launch Your MVP in <br />
+                    <span className="text-blue-600">
+                        <NumberTicker
+                            startValue={20}
+                            direction="down"
+                            value={4}
+                        />{" "}
+                        Weeks
                     </span>
                 </H1>
                 <Lead>
-                    Transform your startup idea into a market-ready MVP. Our
-                    experienced team builds and launches your product in just
-                    2-4 weeks, so you can start validating faster.
+                    Turn your startup idea into a market-ready MVP in 2-4 weeks.
                 </Lead>
                 <div className="flex flex-col sm:flex-row justify-center gap-4">
                     <Button size="xl" className="space-x-2">
@@ -184,39 +195,21 @@ const Hero2 = () => (
                 </div>
             </div>
         </Container>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
+        <div className="flex justify-center mt-12 space-x-8">
             {[
-                {
-                    icon: "Zap",
-                    title: "Rapid Development",
-                    text: "First MVP in 2 weeks, iterations in the next 2 weeks",
-                },
-                {
-                    icon: "Check",
-                    title: "Focused Approach",
-                    text: "Focused on core MVP needs, no inflated requirements",
-                },
-                {
-                    icon: "ListTodo",
-                    title: "Direct Accountability",
-                    text: "Work with builders, not sales reps",
-                },
+                { icon: "Zap", text: "Rapid Development" },
+                { icon: "Check", text: "Focused Approach" },
+                { icon: "ListTodo", text: "Direct Accountability" },
             ].map((item, index) => (
-                <Card
-                    key={index}
-                    className="text-center bg-gradient-to-br from-blue-50 to-blue-100 hover:from-blue-100 hover:to-blue-200 transition-colors duration-300"
-                >
-                    <CardContent className="pt-6">
-                        <Icon
-                            name={item.icon}
-                            className="w-12 h-12 mx-auto mb-4 text-blue-600"
-                        />
-                        <h3 className="text-lg font-semibold mb-2 text-blue-800">
-                            {item.title}
-                        </h3>
-                        <p className="text-gray-700">{item.text}</p>
-                    </CardContent>
-                </Card>
+                <div key={index} className="flex items-center">
+                    <Icon
+                        name={item.icon}
+                        className="w-6 h-6 mr-2 text-blue-600"
+                    />
+                    <span className="text-sm font-medium text-gray-700">
+                        {item.text}
+                    </span>
+                </div>
             ))}
         </div>
     </Section>
@@ -422,29 +415,50 @@ const Services = () => {
         {
             title: "Web App Development",
             description:
-                "Full-stack development using modern technologies like React, Node.js, and AWS.",
+                "Full-stack web applications using modern technologies like React, Node.js, and cloud platforms.",
+            icon: Globe,
+        },
+        {
+            title: "Mobile App Development",
+            description:
+                "Native and cross-platform mobile apps for iOS and Android using React Native or Flutter.",
+            icon: Smartphone,
+        },
+        {
+            title: "AI Development",
+            description:
+                "Integration of AI and machine learning capabilities to enhance your product's intelligence.",
+            icon: Brain,
+        },
+        {
+            title: "Automation Solutions",
+            description:
+                "Custom automation tools and workflows to streamline your business processes.",
+            icon: Cog,
+        },
+        {
+            title: "MVP Strategy & Development",
+            description:
+                "Rapid development of Minimum Viable Products to quickly validate your ideas in the market.",
+            icon: Rocket,
         },
         {
             title: "UI/UX Design",
             description:
-                "Intuitive and appealing interfaces that enhance user engagement.",
-        },
-        {
-            title: "MVP Strategy",
-            description:
-                "We help you identify core features to validate your idea quickly.",
+                "User-centered design solutions to create intuitive and engaging interfaces for your digital products.",
+            icon: Palette,
         },
     ];
 
     return (
         <Section id="services">
-            <SectionTitle>Our MVP Development Services</SectionTitle>
+            <SectionTitle>Our Development Services</SectionTitle>
             <SectionSubtitle>
                 Comprehensive solutions to bring your vision to life
             </SectionSubtitle>
             <div className="grid md:grid-cols-3 gap-8">
                 {services.map((service, index) => (
-                    <FeatureCard key={index} {...service} icon={Code} />
+                    <FeatureCard key={index} {...service} icon={service.icon} />
                 ))}
             </div>
         </Section>
@@ -609,6 +623,85 @@ const PainPoints = () => (
     </Section>
 );
 
+const Timeline = () => {
+    const timelineItems = [
+        {
+            week: "Week 1",
+            description: "Project kickoff and requirements gathering",
+        },
+        {
+            week: "Week 2",
+            description: "UI/UX design and architecture planning",
+        },
+        { week: "Week 3", description: "Core feature development" },
+        {
+            week: "Week 4",
+            description: "MVP completion and initial testing",
+        },
+        { week: "Week 5", description: "User feedback and first iteration" },
+        {
+            week: "Week 6",
+            description: "Final adjustments and market-ready MVP",
+        },
+        {
+            week: "Weeks 7-8",
+            description: "Launch support and user acquisition",
+        },
+        { week: "Ongoing", description: "Continuous improvement and scaling" },
+    ];
+
+    return (
+        <Section id="timeline">
+            <Container>
+                <SectionTitle>The Bolt ⚡ Studio MVP Journey</SectionTitle>
+                <SectionSubtitle>
+                    From concept to market-ready product in weeks
+                </SectionSubtitle>
+
+                <div className="relative mt-12">
+                    <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-blue-500 transform -translate-x-1/2" />
+                    {timelineItems.map((item, index) => (
+                        <div
+                            key={index}
+                            className="mb-12 relative flex items-center"
+                        >
+                            <div className="w-1/2 pr-8 text-right">
+                                <p className="font-semibold text-blue-600">
+                                    {item.week}
+                                </p>
+                            </div>
+                            <div className="absolute left-1/2 top-1/2 w-4 h-4 bg-blue-500 rounded-full transform -translate-x-1/2 -translate-y-1/2" />
+                            <div className="w-64 pl-8">
+                                <p className="text-gray-700 whitespace-pre-line">
+                                    {item.description}
+                                </p>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+
+                <div className="text-center mt-16">
+                    <Lead>
+                        Start today and in just 4-6 weeks, you could have
+                    </Lead>
+                    <H3 className="text-blue-600 mb-4">A Market-Ready MVP</H3>
+                    <Button size="lg" className="">
+                        Start Your MVP Journey
+                    </Button>
+                </div>
+            </Container>
+        </Section>
+    );
+};
+
+const TextRevealDemo = () => {
+    return (
+        // <div className="z-10 flex min-h-64 items-center justify-center rounded-lg border bg-white dark:bg-black">
+        <TextReveal text="What if there's a better way to build your product?" />
+        // </div>
+    );
+};
+
 const FoundersAdvantage = () => {
     const advantages = [
         {
@@ -769,10 +862,11 @@ const CTA = () => (
             your vision into reality.
         </p>
         <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <Button size="lg" variant="secondary">
-                Schedule Free Consultation
+            <Button size="xl" className="space-x-2">
+                <span>Schedule Free Consultation</span>
+                <Icon name="ArrowRight" className="w-5 h-5" />
             </Button>
-            <Button variant="outline" size="lg">
+            <Button variant="outline" size="xl" className="text-black">
                 View Our Work
             </Button>
         </div>
@@ -884,15 +978,17 @@ export default function Home() {
             </Head>
             <Header />
             <main className="max-w-6xl mx-auto px-4 sm:px-6 py-12 space-y-24 mt-24">
-                <Hero />
-                {/* <Hero2 /> */}
+                {/* <Hero /> */}
+                <Hero2 />
                 <PainPoints />
+                <TextRevealDemo />
+                <Timeline />
                 <TrustedBy />
                 <HowItWorks />
                 <Benefits />
+                <Services />
                 <CostCalculator />
                 <WhenWorkWithUs />
-                <Services />
                 <Pricing />
                 <FoundersAdvantage />
                 <FounderProfile />
