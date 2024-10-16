@@ -154,7 +154,7 @@ export const Timeline = () => {
                                 animate={controls}
                             />
                             <motion.div
-                                className="w-64 pl-8"
+                                className="w-36 sm:w-64 pl-8"
                                 variants={descriptionVariants}
                                 custom={index}
                                 initial="hidden"

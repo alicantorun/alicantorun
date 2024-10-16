@@ -58,9 +58,9 @@ import { Timeline } from "@/components/timeline";
 import { CTACalendarButton } from "@/components/cta-calendar-button";
 
 const Hero2 = () => (
-    <Section className="flex flex-col items-center ">
-        <Container>
-            <div className="space-y-6 text-center">
+    <Section className="flex flex-col items-center">
+        <Container className="px-4 sm:px-6 w-full">
+            <div className="space-y-6 text-center w-full">
                 <H1>
                     Launch Your MVP in <br />
                     <span className="text-blue-600">
@@ -80,29 +80,28 @@ const Hero2 = () => (
                         <span>Schedule Free Consultation</span>
                         <Icon name="ArrowRight" className="w-5 h-5" />
                     </CTACalendarButton>
-                    {/* <Button variant="outline" size="xl">
-                        View Pricing
-                    </Button> */}
                 </div>
             </div>
         </Container>
-        <div className="flex justify-center mt-12 space-x-8">
-            {[
-                { icon: "Zap", text: "Rapid Development" },
-                { icon: "Check", text: "Focused Approach" },
-                { icon: "ListTodo", text: "Direct Accountability" },
-            ].map((item, index) => (
-                <div key={index} className="flex items-center">
-                    <Icon
-                        name={item.icon}
-                        className="w-6 h-6 mr-2 text-blue-600"
-                    />
-                    <span className="text-sm font-medium text-gray-700">
-                        {item.text}
-                    </span>
-                </div>
-            ))}
-        </div>
+        <Container className="mt-12">
+            <div className="flex flex-wrap justify-center gap-4">
+                {[
+                    { icon: "Zap", text: "Rapid Development" },
+                    { icon: "Check", text: "Focused Approach" },
+                    { icon: "ListTodo", text: "Direct Accountability" },
+                ].map((item, index) => (
+                    <div key={index} className="flex items-center">
+                        <Icon
+                            name={item.icon}
+                            className="w-5 h-5 sm:w-6 sm:h-6 mr-2 text-blue-600 flex-shrink-0"
+                        />
+                        <span className="text-sm font-medium text-gray-700">
+                            {item.text}
+                        </span>
+                    </div>
+                ))}
+            </div>
+        </Container>
     </Section>
 );
 
@@ -938,7 +937,7 @@ const FounderProfile = () => {
                         alt="Alican Torun"
                         width={200}
                         height={200}
-                        className="rounded-full shadow-lg mb-6"
+                        className="rounded-full w-48 h-48 border shadow-xl mb-6"
                     />
                     <h3 className="text-2xl font-semibold mb-4">
                         Alican Torun
