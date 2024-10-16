@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { motion, useAnimation } from "framer-motion";
+import { useRef, useEffect } from "react";
+import { motion, useAnimation, useInView } from "framer-motion";
 import {
     Container,
     H3,
@@ -13,12 +13,15 @@ import {
 import { Button } from "./ui/button";
 
 export const Timeline = () => {
-    const [activeIndex, setActiveIndex] = useState<number | null>(null);
     const controls = useAnimation();
+    const ref = useRef(null);
+    const inView = useInView(ref, { once: true });
 
     useEffect(() => {
-        controls.start("visible");
-    }, [controls]);
+        if (inView) {
+            controls.start("visible");
+        }
+    }, [controls, inView]);
 
     const timelineItems = [
         {
@@ -46,15 +49,20 @@ export const Timeline = () => {
         { week: "Ongoing", description: "Continuous improvement and scaling" },
     ];
 
+    const lineVariants = {
+        hidden: { height: 0 },
+        visible: {
+            height: "100%",
+            transition: { duration: 2, ease: "easeInOut" },
+        },
+    };
+
     const itemVariants = {
-        hidden: { opacity: 0, y: 20 },
-        visible: (i: number) => ({
+        hidden: { opacity: 0, y: 50 },
+        visible: (i) => ({
             opacity: 1,
             y: 0,
-            transition: {
-                delay: i * 0.3,
-                duration: 0.5,
-            },
+            transition: { delay: i * 0.2, duration: 1, ease: "easeOut" },
         }),
     };
 
@@ -66,23 +74,28 @@ export const Timeline = () => {
                     From concept to market-ready product in weeks
                 </SectionSubtitle>
 
-                <div className="relative mt-12">
-                    <div className="absolute left-1/2 top-0 bottom-0 w-px bg-blue-500 transform -translate-x-1/2" />
+                <div ref={ref} className="relative mt-12">
+                    <motion.div
+                        className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-blue-500 transform -translate-x-1/2"
+                        variants={lineVariants}
+                        initial="hidden"
+                        animate={controls}
+                    />
                     {timelineItems.map((item, index) => (
                         <motion.div
                             key={index}
                             className="mb-12 relative flex items-center"
                             variants={itemVariants}
+                            custom={index}
                             initial="hidden"
                             animate={controls}
-                            custom={index}
                         >
                             <div className="w-1/2 pr-8 text-right">
                                 <p className="font-semibold text-blue-600">
                                     {item.week}
                                 </p>
                             </div>
-                            <div className="absolute left-1/2 top-1/2 w-3 h-3 bg-blue-500 rounded-full transform -translate-x-1/2 -translate-y-1/2" />
+                            <div className="absolute left-1/2 top-1/2 w-4 h-4 bg-white border-2 border-blue-500 rounded-full transform -translate-x-1/2 -translate-y-1/2" />
                             <div className="w-64 pl-8">
                                 <p className="text-gray-700 whitespace-pre-line">
                                     {item.description}
@@ -92,7 +105,15 @@ export const Timeline = () => {
                     ))}
                 </div>
 
-                <div className="text-center mt-16">
+                <motion.div
+                    className="text-center mt-16"
+                    initial={{ opacity: 0, y: 50 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{
+                        delay: timelineItems.length * 0.2 + 1,
+                        duration: 0.5,
+                    }}
+                >
                     <Lead>
                         Start today and in just 4-6 weeks, you could have
                     </Lead>
@@ -100,7 +121,7 @@ export const Timeline = () => {
                     <Button size="lg" className="">
                         Start Your MVP Journey
                     </Button>
-                </div>
+                </motion.div>
             </Container>
         </Section>
     );

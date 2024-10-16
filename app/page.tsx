@@ -51,7 +51,7 @@ import { ContactForm } from "@/components/contact-form";
 import { AnimatedListDemo } from "@/components/problem-list";
 import TextReveal from "@/components/ui/text-reveal";
 import NumberTicker from "@/components/ui/number-ticker";
-// import { Timeline } from "@/components/timeline";
+import { Timeline } from "@/components/timeline";
 
 const Hero = () => (
     <Section className="flex flex-col md:flex-row items-center">
@@ -624,7 +624,7 @@ const PainPoints = () => (
     </Section>
 );
 
-const Timeline = () => {
+const Timeline2 = () => {
     const timelineItems = [
         {
             week: "Week 1",
