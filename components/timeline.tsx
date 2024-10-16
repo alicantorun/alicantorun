@@ -1,7 +1,7 @@
 "use client";
 
-import { useRef, useEffect } from "react";
-import { motion, useAnimation, useInView } from "framer-motion";
+import { useRef, useEffect, useState } from "react";
+import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import {
     Container,
     H3,
@@ -11,21 +11,21 @@ import {
     SectionTitle,
     Paragraph,
 } from "./section";
-import { Button } from "./ui/button";
 import { CTACalendarButton } from "./cta-calendar-button";
 
 export const Timeline = () => {
-    const controls = useAnimation();
-    const ref = useRef(null);
-    const inView = useInView(ref, { once: true });
+    const containerRef = useRef(null);
+    const { scrollYProgress } = useScroll({
+        target: containerRef,
+        offset: ["start end", "end start"],
+    });
 
-    useEffect(() => {
-        if (inView) {
-            setTimeout(() => {
-                controls.start("visible");
-            }, 100);
-        }
-    }, [controls, inView]);
+    const smoothProgress = useSpring(scrollYProgress, {
+        stiffness: 50,
+        damping: 15,
+        restDelta: 0.0001,
+        mass: 0.05,
+    });
 
     const timelineItems = [
         {
@@ -80,40 +80,7 @@ export const Timeline = () => {
         });
     };
 
-    const lineVariants = {
-        hidden: { height: 0 },
-        visible: {
-            height: "100%",
-            transition: { duration: 2.5, ease: "easeInOut" },
-        },
-    };
-
-    const weekVariants = {
-        hidden: { opacity: 0, x: -50 },
-        visible: (i: number) => ({
-            opacity: 1,
-            x: 0,
-            transition: { delay: i * 0.3, duration: 1, ease: "easeOut" },
-        }),
-    };
-
-    const descriptionVariants = {
-        hidden: { opacity: 0, x: 50 },
-        visible: (i: number) => ({
-            opacity: 1,
-            x: 0,
-            transition: { delay: i * 0.3, duration: 1, ease: "easeOut" },
-        }),
-    };
-
-    const dotVariants = {
-        hidden: { scale: 0, opacity: 0 },
-        visible: (i: number) => ({
-            scale: 1,
-            opacity: 1,
-            transition: { delay: i * 0.3, duration: 0.5, ease: "easeOut" },
-        }),
-    };
+    const lineHeight = useTransform(smoothProgress, [0, 0.9], ["0%", "100%"]);
 
     return (
         <Section id="timeline">
@@ -123,59 +90,69 @@ export const Timeline = () => {
                     From concept to market-ready product in weeks
                 </SectionSubtitle>
 
-                <div ref={ref} className="relative mt-12">
+                <div ref={containerRef} className="relative mt-12">
                     <motion.div
                         className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-blue-500 transform -translate-x-1/2"
-                        variants={lineVariants}
-                        initial="hidden"
-                        animate={controls}
+                        style={{ height: lineHeight }}
                     />
-                    {timelineItems.map((item, index) => (
-                        <div
-                            key={index}
-                            className="mb-20 relative flex items-center"
-                        >
+                    {timelineItems.map((item, index) => {
+                        const itemProgress = useTransform(
+                            smoothProgress,
+                            [
+                                index / (timelineItems.length + 1),
+                                (index + 1) / (timelineItems.length + 1),
+                            ],
+                            [0, 1]
+                        );
+                        const opacity = useTransform(
+                            itemProgress,
+                            [0, 0.2, 0.6, 1],
+                            [0, 1, 1, 1]
+                        );
+                        const x = useTransform(
+                            itemProgress,
+                            [0, 0.2, 0.6, 1],
+                            [-30, 0, 0, 0]
+                        );
+
+                        return (
                             <motion.div
-                                className="w-1/2 pr-8 text-right"
-                                variants={weekVariants}
-                                custom={index}
-                                initial="hidden"
-                                animate={controls}
+                                key={index}
+                                className="mb-20 relative flex items-center"
+                                style={{ opacity }}
                             >
-                                <Paragraph className="font-semibold text-blue-600">
-                                    {item.week}
-                                </Paragraph>
+                                <motion.div
+                                    className="w-1/2 pr-8 text-right"
+                                    style={{ x }}
+                                >
+                                    <Paragraph className="font-semibold text-blue-600">
+                                        {item.week}
+                                    </Paragraph>
+                                </motion.div>
+                                <motion.div
+                                    className="absolute left-[calc(50%-8px)] top-[calc(50%-8px)] w-4 h-4 bg-white border-2 border-blue-500 rounded-full transform -translate-x-1/2 -translate-y-1/2"
+                                    style={{ scale: itemProgress }}
+                                />
+                                <motion.div
+                                    className="w-36 sm:w-64 pl-8"
+                                    style={{
+                                        x: useTransform(x, (value) => -value),
+                                    }}
+                                >
+                                    <Paragraph className="text-gray-700 whitespace-pre-line">
+                                        {item.description}
+                                    </Paragraph>
+                                </motion.div>
                             </motion.div>
-                            <motion.div
-                                className="absolute left-[calc(50%-8px)] top-[calc(50%-8px)] w-4 h-4 bg-white border-2 border-blue-500 rounded-full transform -translate-x-1/2 -translate-y-1/2"
-                                variants={dotVariants}
-                                custom={index}
-                                initial="hidden"
-                                animate={controls}
-                            />
-                            <motion.div
-                                className="w-36 sm:w-64 pl-8"
-                                variants={descriptionVariants}
-                                custom={index}
-                                initial="hidden"
-                                animate={controls}
-                            >
-                                <Paragraph className="text-gray-700 whitespace-pre-line">
-                                    {item.description}
-                                </Paragraph>
-                            </motion.div>
-                        </div>
-                    ))}
+                        );
+                    })}
                 </div>
 
                 <motion.div
                     className="text-center mt-16"
                     initial={{ opacity: 0, y: 50 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{
-                        delay: timelineItems.length * 0.2 + 2,
-                        duration: 0.5,
-                    }}
+                    transition={{ delay: 0.5, duration: 0.5 }}
                 >
                     <Lead>
                         Start today and by{" "}
