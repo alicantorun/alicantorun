@@ -120,7 +120,7 @@ export const Paragraph: React.FC<CommonProps> = ({
     className,
     ...props
 }) => (
-    <p className={cn("text-lg leading-relaxed mb-6", className)} {...props}>
+    <p className={cn("text-lg leading-relaxed", className)} {...props}>
         {children}
     </p>
 );

@@ -9,6 +9,7 @@ import {
     Section,
     SectionSubtitle,
     SectionTitle,
+    Paragraph,
 } from "./section";
 import { Button } from "./ui/button";
 
@@ -19,10 +20,9 @@ export const Timeline = () => {
 
     useEffect(() => {
         if (inView) {
-            // Add a 1-second delay before starting the animation
             setTimeout(() => {
                 controls.start("visible");
-            }, 1000);
+            }, 500);
         }
     }, [controls, inView]);
 
@@ -56,16 +56,34 @@ export const Timeline = () => {
         hidden: { height: 0 },
         visible: {
             height: "100%",
-            transition: { duration: 2, ease: "easeInOut" },
+            transition: { duration: 2.5, ease: "easeInOut" },
         },
     };
 
-    const itemVariants = {
-        hidden: { opacity: 0, y: 50 },
+    const weekVariants = {
+        hidden: { opacity: 0, x: -50 },
         visible: (i: number) => ({
             opacity: 1,
-            y: 0,
-            transition: { delay: i * 0.2, duration: 1, ease: "easeOut" },
+            x: 0,
+            transition: { delay: i * 0.3, duration: 1, ease: "easeOut" },
+        }),
+    };
+
+    const descriptionVariants = {
+        hidden: { opacity: 0, x: 50 },
+        visible: (i: number) => ({
+            opacity: 1,
+            x: 0,
+            transition: { delay: i * 0.3, duration: 1, ease: "easeOut" },
+        }),
+    };
+
+    const dotVariants = {
+        hidden: { scale: 0, opacity: 0 },
+        visible: (i: number) => ({
+            scale: 1,
+            opacity: 1,
+            transition: { delay: i * 0.3, duration: 0.5, ease: "easeOut" },
         }),
     };
 
@@ -85,26 +103,40 @@ export const Timeline = () => {
                         animate={controls}
                     />
                     {timelineItems.map((item, index) => (
-                        <motion.div
+                        <div
                             key={index}
                             className="mb-20 relative flex items-center"
-                            variants={itemVariants}
-                            custom={index}
-                            initial="hidden"
-                            animate={controls}
                         >
-                            <div className="w-1/2 pr-8 text-right">
-                                <p className="font-semibold text-blue-600">
+                            <motion.div
+                                className="w-1/2 pr-8 text-right"
+                                variants={weekVariants}
+                                custom={index}
+                                initial="hidden"
+                                animate={controls}
+                            >
+                                <Paragraph className="font-semibold text-blue-600">
                                     {item.week}
-                                </p>
-                            </div>
-                            <div className="absolute left-1/2 top-1/2 w-4 h-4 bg-white border-2 border-blue-500 rounded-full transform -translate-x-1/2 -translate-y-1/2" />
-                            <div className="w-64 pl-8">
-                                <p className="text-gray-700 whitespace-pre-line">
+                                </Paragraph>
+                            </motion.div>
+                            <motion.div
+                                className="absolute left-[calc(50%-8px)] top-[calc(50%-8px)] w-4 h-4 bg-white border-2 border-blue-500 rounded-full transform -translate-x-1/2 -translate-y-1/2"
+                                variants={dotVariants}
+                                custom={index}
+                                initial="hidden"
+                                animate={controls}
+                            />
+                            <motion.div
+                                className="w-64 pl-8"
+                                variants={descriptionVariants}
+                                custom={index}
+                                initial="hidden"
+                                animate={controls}
+                            >
+                                <Paragraph className="text-gray-700 whitespace-pre-line">
                                     {item.description}
-                                </p>
-                            </div>
-                        </motion.div>
+                                </Paragraph>
+                            </motion.div>
+                        </div>
                     ))}
                 </div>
 
@@ -113,7 +145,7 @@ export const Timeline = () => {
                     initial={{ opacity: 0, y: 50 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{
-                        delay: timelineItems.length * 0.2 + 2, // Increased delay by 1 second
+                        delay: timelineItems.length * 0.2 + 2,
                         duration: 0.5,
                     }}
                 >
