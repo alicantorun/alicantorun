@@ -19,7 +19,10 @@ export const Timeline = () => {
 
     useEffect(() => {
         if (inView) {
-            controls.start("visible");
+            // Add a 1-second delay before starting the animation
+            setTimeout(() => {
+                controls.start("visible");
+            }, 1000);
         }
     }, [controls, inView]);
 
@@ -59,7 +62,7 @@ export const Timeline = () => {
 
     const itemVariants = {
         hidden: { opacity: 0, y: 50 },
-        visible: (i) => ({
+        visible: (i: number) => ({
             opacity: 1,
             y: 0,
             transition: { delay: i * 0.2, duration: 1, ease: "easeOut" },
@@ -84,7 +87,7 @@ export const Timeline = () => {
                     {timelineItems.map((item, index) => (
                         <motion.div
                             key={index}
-                            className="mb-12 relative flex items-center"
+                            className="mb-20 relative flex items-center"
                             variants={itemVariants}
                             custom={index}
                             initial="hidden"
@@ -110,7 +113,7 @@ export const Timeline = () => {
                     initial={{ opacity: 0, y: 50 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{
-                        delay: timelineItems.length * 0.2 + 1,
+                        delay: timelineItems.length * 0.2 + 2, // Increased delay by 1 second
                         duration: 0.5,
                     }}
                 >

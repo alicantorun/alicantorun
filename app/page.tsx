@@ -175,7 +175,7 @@ const Hero2 = () => (
                     Launch Your MVP in <br />
                     <span className="text-blue-600">
                         <NumberTicker
-                            startValue={20}
+                            startValue={24}
                             direction="down"
                             value={4}
                         />{" "}
@@ -183,7 +183,7 @@ const Hero2 = () => (
                     </span>
                 </H1>
                 <Lead>
-                    Turn your startup idea into a market-ready MVP in 2-4 weeks.
+                    Turn your startup idea into a market-ready MVP in 4 weeks.
                 </Lead>
                 <div className="flex flex-col sm:flex-row justify-center gap-4">
                     <Button size="xl" className="space-x-2">
@@ -993,7 +993,7 @@ export default function Home() {
                 <meta name="twitter:card" content="summary_large_image" />
             </Head>
             <Header />
-            <main className="max-w-6xl mx-auto px-4 sm:px-6 py-12 space-y-24 mt-24">
+            <main className="max-w-6xl mx-auto px-4 sm:px-6 py-12 space-y-24 mt-12">
                 {/* <Hero /> */}
                 <Hero2 />
                 <PainPoints />
