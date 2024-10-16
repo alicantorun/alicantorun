@@ -29,28 +29,55 @@ export const Timeline = () => {
     const timelineItems = [
         {
             week: "Week 1",
-            description: "Project kickoff and requirements gathering",
+            description:
+                "Project kickoff, requirements gathering, and rapid prototyping",
         },
         {
             week: "Week 2",
-            description: "UI/UX design and architecture planning",
+            description:
+                "UI/UX design, architecture planning, and initial setup",
         },
-        { week: "Week 3", description: "Core feature development" },
+        {
+            week: "Week 3",
+            description:
+                "Core feature development and integration of key technologies",
+        },
         {
             week: "Week 4",
-            description: "MVP completion and initial testing",
+            description: "MVP completion, initial testing, and bug fixes",
         },
-        { week: "Week 5", description: "User feedback and first iteration" },
+        {
+            week: "Week 5",
+            description:
+                "User feedback collection, analysis, and first iteration",
+        },
         {
             week: "Week 6",
-            description: "Final adjustments and market-ready MVP",
+            description:
+                "Final adjustments, performance optimization, and market-ready MVP",
         },
         {
             week: "Weeks 7-8",
-            description: "Launch support and user acquisition",
+            description:
+                "Launch support, user onboarding, and initial marketing push",
         },
-        { week: "Ongoing", description: "Continuous improvement and scaling" },
+        {
+            week: "Ongoing",
+            description:
+                "Continuous improvement, feature expansion, and scaling based on user data",
+        },
     ];
+
+    const getFutureDate = (weeksFromNow: number) => {
+        const today = new Date();
+        const futureDate = new Date(
+            today.getTime() + weeksFromNow * 7 * 24 * 60 * 60 * 1000
+        );
+        return futureDate.toLocaleDateString("en-US", {
+            month: "long",
+            day: "numeric",
+        });
+    };
 
     const lineVariants = {
         hidden: { height: 0 },
@@ -150,7 +177,11 @@ export const Timeline = () => {
                     }}
                 >
                     <Lead>
-                        Start today and in just 4-6 weeks, you could have
+                        Start today and by{" "}
+                        <span className="text-blue-600 font-semibold">
+                            {getFutureDate(8)}
+                        </span>
+                        , you could have
                     </Lead>
                     <H3 className="text-blue-600 mb-4">A Market-Ready MVP</H3>
                     <Button size="lg" className="">

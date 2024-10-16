@@ -10,6 +10,8 @@ import {
     Users,
     Key,
     Fingerprint,
+    DollarSign,
+    Maximize,
 } from "lucide-react";
 import { motion } from "framer-motion";
 import { Card } from "./ui/card";
@@ -86,12 +88,34 @@ export const CostCalculator: React.FC = () => {
         setSavings(traditionalCost - launchableCost);
     }, [traditionalCost]);
 
+    const benefits = [
+        {
+            title: "Rapid Development",
+            description: "Your MVP ready in just 2-4 weeks.",
+            icon: Zap,
+        },
+        {
+            title: "Cost-Effective",
+            description: "Save up to 75% compared to traditional development.",
+            icon: DollarSign,
+        },
+        {
+            title: "Experienced Team",
+            description: "Access senior developers with startup experience.",
+            icon: Users,
+        },
+        {
+            title: "Flexible & Scalable",
+            description: "Start small and scale as you grow.",
+            icon: Maximize,
+        },
+    ];
+
     return (
         <Section id="cost-calculator">
-            <SectionTitle>Interactive Cost Calculator</SectionTitle>
+            <SectionTitle>Supercharge Your MVP Savings</SectionTitle>
             <SectionSubtitle>
-                Discover how much you can save with our innovative fixed-price
-                model!
+                Calculate how Bolt ⚡ Studio slashes your development costs
             </SectionSubtitle>
             <div className="grid md:grid-cols-2 gap-8">
                 <div className="space-y-4">
@@ -131,7 +155,7 @@ export const CostCalculator: React.FC = () => {
                 </div>
                 <div className="space-y-6">
                     <motion.div
-                        className="p-0 sm:p-4 bg-white"
+                        className="p-6 bg-white rounded-lg shadow-lg"
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5 }}
@@ -150,7 +174,7 @@ export const CostCalculator: React.FC = () => {
                             </p>
                             <p className="flex justify-between items-center">
                                 <span className="text-gray-600">
-                                    Launchable Studio:
+                                    Bolt ⚡ Studio:
                                 </span>
                                 <span className="text-xl font-bold text-black">
                                     ${launchableCost}
@@ -158,35 +182,47 @@ export const CostCalculator: React.FC = () => {
                             </p>
                             <motion.div
                                 className="border-t pt-4 mt-4"
+                                animate={{ scale: [1, 1.05, 1] }}
                                 transition={{
-                                    duration: 0.5,
-                                    repeat: Infinity,
-                                    repeatType: "reverse",
+                                    duration: 1,
+                                    repeat: 3,
+                                    repeatType: "mirror",
                                 }}
                             >
                                 <p className="flex justify-between items-center text-2xl font-bold text-black">
                                     <span>Total Savings:</span>
-                                    <span>${savings}</span>
+                                    <span className="text-green-600">
+                                        ${savings}
+                                    </span>
                                 </p>
                             </motion.div>
                         </div>
                     </motion.div>
                     <div className="bg-black text-white p-6 rounded-lg shadow-lg">
-                        <h4 className="text-xl font-semibold mb-2 flex items-center">
-                            <Rocket className="mr-2" /> Why Choose Launchable
+                        <h4 className="text-xl font-semibold mb-4 flex items-center">
+                            <Rocket className="mr-2" /> Why Choose Bolt ⚡
                             Studio?
                         </h4>
-                        <ul className="list-disc list-inside space-y-2">
-                            <li>All features included for one fixed price</li>
-                            <li>No hidden costs or surprise fees</li>
-                            <li>Faster development and deployment</li>
-                            <li>Experienced team dedicated to your success</li>
+                        <ul className="space-y-4">
+                            {benefits.map((benefit, index) => (
+                                <li key={index} className="flex items-start">
+                                    <benefit.icon className="w-6 h-6 mr-3 text-yellow-400 flex-shrink-0" />
+                                    <div>
+                                        <h5 className="font-semibold">
+                                            {benefit.title}
+                                        </h5>
+                                        <p className="text-sm text-gray-300">
+                                            {benefit.description}
+                                        </p>
+                                    </div>
+                                </li>
+                            ))}
                         </ul>
                     </div>
                 </div>
             </div>
             <motion.div
-                className="text-center mt-8"
+                className="text-center mt-12"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.5 }}

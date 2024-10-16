@@ -2,7 +2,7 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import {
     Accordion,
@@ -32,6 +32,9 @@ import {
     Palette,
     Rocket,
     Smartphone,
+    Briefcase,
+    Award,
+    TrendingUp,
 } from "lucide-react";
 import { WhenWorkWithUs } from "@/components/when-work-with-us";
 import {
@@ -229,9 +232,9 @@ const TrustedBy = () => {
     return (
         <Section id="trusted-by">
             <SectionTitle>Trusted by Innovative Startups</SectionTitle>
-            <SectionSubtitle>
+            {/* <SectionSubtitle>
                 Join the ranks of successful startups who've launched with us
-            </SectionSubtitle>
+            </SectionSubtitle> */}
             <div className="relative overflow-hidden">
                 <div className="fade-edge-overlay"></div>
                 <div className="flex animate-scroll">
@@ -247,6 +250,58 @@ const TrustedBy = () => {
                         )
                     )}
                 </div>
+            </div>
+        </Section>
+    );
+};
+
+const FounderExperience = () => {
+    const experiences = [
+        { name: "Visuo", role: "Co-Founder", logo: "/visuo-logo.svg" },
+        {
+            name: "Antler",
+            role: "Entrepreneur in Residence",
+            logo: "/antler-logo.svg",
+        },
+        {
+            name: "Parloa",
+            role: "Frontend Developer",
+            logo: "/parloa-logo.svg",
+        },
+        {
+            name: "cirplus",
+            role: "Full Stack Developer",
+            logo: "/cirplus-logo.svg",
+        },
+    ];
+
+    return (
+        <Section id="founder-experience">
+            <SectionTitle>Founder's Industry Experience</SectionTitle>
+            <SectionSubtitle>
+                Leveraging expertise from leading tech companies
+            </SectionSubtitle>
+            <div className="flex flex-wrap justify-center gap-8 mt-8">
+                {experiences.map((exp, index) => (
+                    <div
+                        key={index}
+                        className="flex flex-col items-center space-y-2"
+                    >
+                        <Image
+                            src={exp.logo}
+                            alt={`${exp.name} logo`}
+                            width={100}
+                            height={100}
+                            className="w-24 h-24 object-contain"
+                        />
+                        <span className="text-xl font-semibold">
+                            {exp.name}
+                        </span>
+                        <span className="text-sm text-gray-600">
+                            {exp.role}
+                        </span>
+                    </div>
+                ))}
             </div>
         </Section>
     );
@@ -924,48 +979,173 @@ const Footer = () => (
     </footer>
 );
 
-const FounderProfile = () => (
-    <Section id="founder">
-        <SectionTitle>Meet Our Founder</SectionTitle>
-        <div className="flex flex-col md:flex-row items-center gap-8">
-            <div className="md:w-1/3 flex justify-center">
-                <Image
-                    src="/founder.png"
-                    alt="Alican Torun"
-                    width={250}
-                    height={250}
-                    className="rounded-full"
-                    style={{
-                        objectFit: "cover",
-                        width: "250px",
-                        height: "250px",
-                    }}
-                />
+const FounderProfile = () => {
+    const experiences = [
+        {
+            name: "Visuo",
+            role: "Co-Founder",
+            logo: "/visuo-logo.svg",
+            website: "https://www.visuo.ai",
+        },
+        {
+            name: "Antler",
+            role: "Entrepreneur in Residence",
+            logo: "/antler-logo.svg",
+            website: "https://www.antler.co",
+        },
+        {
+            name: "Parloa",
+            role: "Frontend Developer",
+            logo: "/parloa-logo.svg",
+            website: "https://www.parloa.com",
+        },
+        {
+            name: "cirplus",
+            role: "Full Stack Developer",
+            logo: "/cirplus-logo.svg",
+            website: "https://www.cirplus.com",
+        },
+    ];
+
+    const badges = [
+        { text: "6+ Years Pro", icon: Award },
+        { text: "Tech Pioneer", icon: TrendingUp },
+        { text: "Software Expert", icon: Code },
+        { text: "Cloud Savvy", icon: Cloud },
+    ];
+
+    const founderAdvantages = [
+        {
+            title: "Startup Experience",
+            description:
+                "Built and scaled startups, understanding your challenges.",
+            icon: Rocket,
+        },
+        {
+            title: "Investor Insights",
+            description: "VC background to shape investor-attractive MVPs.",
+            icon: TrendingUp,
+        },
+        {
+            title: "Rapid Iteration",
+            description: "Move fast and adapt quickly to market feedback.",
+            icon: RefreshCw,
+        },
+        {
+            title: "Growth-Focused",
+            description: "Advise on strategies to acquire first users.",
+            icon: Users,
+        },
+    ];
+
+    return (
+        <Section id="founder">
+            <h2 className="text-4xl font-bold text-center mb-12">
+                Meet Our Founder
+            </h2>
+            <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 items-start">
+                {/* Founder Image Column */}
+                <div className="lg:col-span-1 flex flex-col items-center">
+                    <Image
+                        src="/founder.png"
+                        alt="Alican Torun"
+                        width={200}
+                        height={200}
+                        className="rounded-full shadow-lg mb-6"
+                    />
+                    <h3 className="text-2xl font-semibold mb-4">
+                        Alican Torun
+                    </h3>
+                    <div className="flex flex-wrap justify-center gap-2 mb-6">
+                        {badges.map((badge, index) => (
+                            <Badge
+                                key={index}
+                                variant="secondary"
+                                className="text-sm py-1"
+                            >
+                                <badge.icon className="w-4 h-4 mr-1" />
+                                {badge.text}
+                            </Badge>
+                        ))}
+                    </div>
+                </div>
+
+                {/* Experiences Column */}
+                <div className="lg:col-span-2 space-y-6">
+                    <p className="text-gray-600 mb-6">
+                        Experienced Full Stack Developer with 6 years of
+                        expertise in TypeScript/JavaScript. Specializes in
+                        building responsive and dynamic web and mobile
+                        applications.
+                    </p>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        {experiences.map((exp, index) => (
+                            <Card key={index}>
+                                <Link
+                                    href={exp.website}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    <CardContent className="p-4 flex flex-col items-start gap-3">
+                                        <Image
+                                            src={exp.logo}
+                                            alt={exp.name}
+                                            width={120}
+                                            height={40}
+                                        />
+                                        <p className="text-sm text-gray-600">
+                                            {exp.role}
+                                        </p>
+                                    </CardContent>
+                                </Link>
+                            </Card>
+                        ))}
+                    </div>
+                    <p className="text-gray-600 mt-6">
+                        Alican brings a wealth of experience in developing
+                        sophisticated web applications, managing projects, and
+                        driving technological innovations. His expertise spans
+                        across various technologies including React.js, Node.js,
+                        and cloud platforms like GCP and AWS.
+                    </p>
+                </div>
+
+                {/* Founder's Advantage Column */}
+                <div className="lg:col-span-1">
+                    <Card>
+                        <CardHeader>
+                            <CardTitle className="text-lg font-semibold">
+                                Founder's Advantage
+                            </CardTitle>
+                        </CardHeader>
+                        <CardContent className="space-y-3">
+                            <p className="text-sm text-gray-600">
+                                Founders building for founders. Leveraging our
+                                startup experience.
+                            </p>
+                            {founderAdvantages.map((advantage, index) => (
+                                <div
+                                    key={index}
+                                    className="flex items-start gap-3"
+                                >
+                                    <advantage.icon className="w-5 h-5 text-blue-500 mt-1 flex-shrink-0" />
+                                    <div>
+                                        <h5 className="font-semibold text-sm">
+                                            {advantage.title}
+                                        </h5>
+                                        <p className="text-xs text-gray-600">
+                                            {advantage.description}
+                                        </p>
+                                    </div>
+                                </div>
+                            ))}
+                        </CardContent>
+                    </Card>
+                </div>
             </div>
-            <div className="md:w-2/3">
-                <h3 className="text-2xl font-semibold mb-4">Alican Torun</h3>
-                <p className="text-lg mb-4">
-                    Experienced Full Stack Developer with 6 years of expertise
-                    in TypeScript/JavaScript. Specializes in building responsive
-                    and dynamic web and mobile applications.
-                </p>
-                <ul className="list-disc list-inside space-y-2">
-                    <li>Co-Founder and CPO at Visuo</li>
-                    <li>Former Entrepreneur in Residence at Antler</li>
-                    <li>Frontend Developer at Parloa</li>
-                    <li>Full Stack Developer at cirplus</li>
-                </ul>
-                <p className="mt-4">
-                    Alican brings a wealth of experience in developing
-                    sophisticated web applications, managing projects, and
-                    driving technological innovations. His expertise spans
-                    across various technologies including React.js, Node.js, and
-                    cloud platforms like GCP and AWS.
-                </p>
-            </div>
-        </div>
-    </Section>
-);
+        </Section>
+    );
+};
 
 export default function Home() {
     return (
@@ -999,15 +1179,16 @@ export default function Home() {
                 <PainPoints />
                 <TextRevealDemo />
                 <Timeline />
-                <TrustedBy />
-                <HowItWorks />
-                <Benefits />
-                <Services />
+                {/* <FoundersAdvantage /> */}
+                <FounderProfile />
+                {/* <FounderExperience /> */}
+                {/* <TrustedBy /> */}
+                {/* <HowItWorks /> */}
                 <CostCalculator />
+                {/* <Benefits /> */}
+                <Services />
                 <WhenWorkWithUs />
                 <Pricing />
-                <FoundersAdvantage />
-                <FounderProfile />
                 <Testimonials />
                 <FAQ />
                 <CTA />
