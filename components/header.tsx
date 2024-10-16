@@ -29,12 +29,12 @@ export const Header = () => {
     return (
         <header
             className={`fixed top-0 left-1/2 -translate-x-1/2 z-50 transition-all duration-300 bg-[#FAFAFA]
-                        w-full sm:w-11/12 md:w-10/12 lg:w-8/12 xl:w-6/12
+                        w-full sm:w-11/12 md:w-10/12 lg:w-8/12 xl:w-10/12
                         sm:top-4 sm:rounded-full
                         ${isScrolled ? "sm:top-2" : ""}
                         ${
                             isScrolled
-                                ? "bg-white/80 backdrop-blur-md shadow-lg"
+                                ? "bg-white/20 backdrop-blur-md shadow-lg"
                                 : "bg-white"
                         }`}
         >
@@ -43,7 +43,21 @@ export const Header = () => {
                     Bolt ⚡ Studio
                 </span>
 
-                <button
+                <Button
+                    className="sm:hidden"
+                    variant="default"
+                    size="default"
+                    onClick={() =>
+                        window.open(
+                            "https://calendar.app.google/QJv8aMhQvFVF5fmV9",
+                            "_blank"
+                        )
+                    }
+                >
+                    Launch Your MVP
+                </Button>
+
+                {/* <button
                     className="sm:hidden w-8 h-8 flex flex-col justify-center items-center"
                     onClick={toggleMenu}
                 >
@@ -69,10 +83,10 @@ export const Header = () => {
                                     : "translate-y-0.5"
                             }`}
                     ></span>
-                </button>
+                </button> */}
 
                 <nav className="hidden sm:flex items-center space-x-4">
-                    <Link href="#work" className="text-sm hover:underline">
+                    {/* <Link href="#work" className="text-sm hover:underline">
                         Work
                     </Link>
                     <Link href="#about" className="text-sm hover:underline">
@@ -80,9 +94,18 @@ export const Header = () => {
                     </Link>
                     <Link href="#contact" className="text-sm hover:underline">
                         Contact
-                    </Link>
-                    <Button variant="default" size="sm">
-                        Start
+                    </Link> */}
+                    <Button
+                        variant="default"
+                        size="default"
+                        onClick={() =>
+                            window.open(
+                                "https://calendar.app.google/QJv8aMhQvFVF5fmV9",
+                                "_blank"
+                            )
+                        }
+                    >
+                        Launch Your MVP
                     </Button>
                 </nav>
             </div>
@@ -93,7 +116,7 @@ export const Header = () => {
                 } overflow-hidden transition-all duration-300 ease-in-out`}
             >
                 <nav className="flex flex-col items-center space-y-3 py-3">
-                    <Link href="#work" className="text-sm hover:underline">
+                    {/* <Link href="#work" className="text-sm hover:underline">
                         Work
                     </Link>
                     <Link href="#about" className="text-sm hover:underline">
@@ -101,9 +124,18 @@ export const Header = () => {
                     </Link>
                     <Link href="#contact" className="text-sm hover:underline">
                         Contact
-                    </Link>
-                    <Button variant="default" size="sm">
-                        Start a project
+                    </Link> */}
+                    <Button
+                        variant="default"
+                        size="default"
+                        onClick={() =>
+                            window.open(
+                                "https://calendar.app.google/QJv8aMhQvFVF5fmV9",
+                                "_blank"
+                            )
+                        }
+                    >
+                        Launch Your MVP
                     </Button>
                 </nav>
             </div>

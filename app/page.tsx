@@ -55,120 +55,7 @@ import { AnimatedListDemo } from "@/components/problem-list";
 import TextReveal from "@/components/ui/text-reveal";
 import NumberTicker from "@/components/ui/number-ticker";
 import { Timeline } from "@/components/timeline";
-
-const Hero = () => (
-    <Section className="flex flex-col md:flex-row items-center">
-        <Container>
-            <div className="space-y-6">
-                <H1>
-                    Launch Your MVP in{" "}
-                    <span className="text-blue-600">4 Weeks</span>
-                    <br />
-                    <span className="text-3xl sm:text-4xl text-gray-600">
-                        Without Breaking the Bank
-                    </span>
-                </H1>
-                <Lead className="text-lg sm:text-xl">
-                    Transform your startup idea into a market-ready MVP. Our
-                    experienced team builds and launches your product in just
-                    2-4 weeks, so you can start validating faster.
-                </Lead>
-                <div className="flex flex-col sm:flex-row gap-4">
-                    <Button size="lg" className="space-x-2 w-full sm:w-auto">
-                        <span>Schedule Free Consultation</span>
-                        <Icon name="ArrowRight" className="w-5 h-5" />
-                    </Button>
-                    <Button
-                        variant="outline"
-                        size="lg"
-                        className="w-full sm:w-auto"
-                    >
-                        View Pricing
-                    </Button>
-                </div>
-                <List className="text-sm mt-4">
-                    {[
-                        {
-                            icon: "Zap",
-                            text: "First MVP in 2 weeks, iterations in the next 2 weeks",
-                        },
-                        {
-                            icon: "Check",
-                            text: "Focused on core MVP needs, no inflated requirements",
-                        },
-                        {
-                            icon: "ListTodo",
-                            text: "Direct accountability - work with builders, not sales reps",
-                        },
-                    ].map((item, index) => (
-                        <ListItem key={index} className="flex items-start">
-                            <Icon
-                                name={item.icon}
-                                className="w-4 h-4 mr-2 text-yellow-500 flex-shrink-0 mt-1"
-                            />
-                            <span>{item.text}</span>
-                        </ListItem>
-                    ))}
-                </List>
-            </div>
-        </Container>
-    </Section>
-);
-
-const Hero3 = () => (
-    <Section className="flex flex-col md:flex-row items-center">
-        <Container>
-            <div className="space-y-6">
-                <H1>
-                    Launch Your MVP in{" "}
-                    <span className="text-blue-600">4 Weeks</span>
-                    <br />
-                    <span className="text-3xl sm:text-4xl text-gray-600">
-                        Without Breaking the Bank
-                    </span>
-                </H1>
-                <Lead>
-                    Transform your startup idea into a market-ready MVP. Our
-                    experienced team builds and launches your product in just
-                    2-4 weeks, so you can start validating faster.
-                </Lead>
-                <div className="flex flex-col sm:flex-row gap-4">
-                    <Button size="xl" className="space-x-2">
-                        <span>Schedule Free Consultation</span>
-                        <Icon name="ArrowRight" className="w-5 h-5" />
-                    </Button>
-                    <Button variant="outline" size="xl">
-                        View Pricing
-                    </Button>
-                </div>
-                <List className="text-sm mt-4">
-                    {[
-                        {
-                            icon: "Zap",
-                            text: "First MVP in 2 weeks, iterations in the next 2 weeks",
-                        },
-                        {
-                            icon: "Check",
-                            text: "Focused on core MVP needs, no inflated requirements",
-                        },
-                        {
-                            icon: "ListTodo",
-                            text: "Direct accountability - work with builders, not sales reps",
-                        },
-                    ].map((item, index) => (
-                        <ListItem key={index}>
-                            <Icon
-                                name={item.icon}
-                                className="w-4 h-4 mr-2 text-yellow-500"
-                            />
-                            {item.text}
-                        </ListItem>
-                    ))}
-                </List>
-            </div>
-        </Container>
-    </Section>
-);
+import { CTACalendarButton } from "@/components/cta-calendar-button";
 
 const Hero2 = () => (
     <Section className="flex flex-col items-center ">
@@ -189,13 +76,13 @@ const Hero2 = () => (
                     Turn your startup idea into a market-ready MVP in 4 weeks.
                 </Lead>
                 <div className="flex flex-col sm:flex-row justify-center gap-4">
-                    <Button size="xl" className="space-x-2">
+                    <CTACalendarButton>
                         <span>Schedule Free Consultation</span>
                         <Icon name="ArrowRight" className="w-5 h-5" />
-                    </Button>
-                    <Button variant="outline" size="xl">
+                    </CTACalendarButton>
+                    {/* <Button variant="outline" size="xl">
                         View Pricing
-                    </Button>
+                    </Button> */}
                 </div>
             </div>
         </Container>
@@ -477,7 +364,7 @@ const Services = () => {
         {
             title: "Mobile App Development",
             description:
-                "Native and cross-platform mobile apps for iOS and Android using React Native or Flutter.",
+                "Native and cross-platform mobile apps for iOS and Android using React Native.",
             icon: Smartphone,
         },
         {
@@ -667,9 +554,9 @@ const PainPoints = () => (
                         At Bolt ⚡ Studio, we solve these problems by delivering
                         your MVP quickly and efficiently.
                     </p>
-                    <Button size="lg" className="mt-6">
+                    <CTACalendarButton size="lg" className="mt-6">
                         Solve Your MVP Challenges
-                    </Button>
+                    </CTACalendarButton>
                 </div>
                 <div className="md:w-1/2">
                     <AnimatedListDemo className="" />
@@ -923,7 +810,7 @@ const FAQ = () => {
 const CTA = () => (
     <Section
         id="cta"
-        className="bg-blue-600 text-white py-16 px-4 rounded-3xl text-center"
+        className="shadow-md bg-transparent border py-16 px-4 rounded-3xl text-center"
     >
         <h2 className="text-3xl font-bold mb-4">
             Ready to Launch Your Startup?
@@ -933,13 +820,13 @@ const CTA = () => (
             your vision into reality.
         </p>
         <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <Button size="xl" className="space-x-2">
+            <CTACalendarButton size="xl" className="space-x-2">
                 <span>Schedule Free Consultation</span>
                 <Icon name="ArrowRight" className="w-5 h-5" />
-            </Button>
-            <Button variant="outline" size="xl" className="text-black">
+            </CTACalendarButton>
+            {/* <Button variant="outline" size="xl" className="text-black">
                 View Our Work
-            </Button>
+            </Button> */}
         </div>
         <p className="mt-6 text-sm">
             No commitment required. We'll discuss your project and provide a
@@ -958,10 +845,10 @@ const Footer = () => (
                     months.
                 </p>
                 <p className="text-sm mt-2">
-                    Contact us at hello@launchable.studio
+                    Contact us at torun.alican@gmail.com
                 </p>
             </div>
-            <div className="flex flex-col space-y-2">
+            {/* <div className="flex flex-col space-y-2">
                 {["Services", "Pricing", "FAQ", "Contact"].map((item) => (
                     <Link
                         key={item}
@@ -971,7 +858,7 @@ const Footer = () => (
                         {item}
                     </Link>
                 ))}
-            </div>
+            </div> */}
         </div>
         <div className="max-w-6xl mx-auto px-6 mt-8 pt-8 border-t border-gray-800 text-center text-sm">
             © {new Date().getFullYear()} Bolt ⚡ Studio. All Rights Reserved.
@@ -1184,15 +1071,15 @@ export default function Home() {
                 {/* <FounderExperience /> */}
                 {/* <TrustedBy /> */}
                 {/* <HowItWorks /> */}
-                <CostCalculator />
+                {/* <CostCalculator /> */}
                 {/* <Benefits /> */}
-                <Services />
-                <WhenWorkWithUs />
-                <Pricing />
-                <Testimonials />
+                {/* <Services /> */}
+                {/* <WhenWorkWithUs /> */}
+                {/* <Pricing /> */}
+                {/* <Testimonials /> */}
                 <FAQ />
                 <CTA />
-                <ContactForm />
+                {/* <ContactForm /> */}
             </main>
             <Footer />
         </div>

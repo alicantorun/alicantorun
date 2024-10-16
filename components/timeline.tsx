@@ -12,6 +12,7 @@ import {
     Paragraph,
 } from "./section";
 import { Button } from "./ui/button";
+import { CTACalendarButton } from "./cta-calendar-button";
 
 export const Timeline = () => {
     const controls = useAnimation();
@@ -22,7 +23,7 @@ export const Timeline = () => {
         if (inView) {
             setTimeout(() => {
                 controls.start("visible");
-            }, 500);
+            }, 100);
         }
     }, [controls, inView]);
 
@@ -184,9 +185,9 @@ export const Timeline = () => {
                         , you could have
                     </Lead>
                     <H3 className="text-blue-600 mb-4">A Market-Ready MVP</H3>
-                    <Button size="lg" className="">
+                    <CTACalendarButton size="lg" className="">
                         Start Your MVP Journey
-                    </Button>
+                    </CTACalendarButton>
                 </motion.div>
             </Container>
         </Section>
