@@ -1042,7 +1042,7 @@ export default function Home() {
                     name="description"
                     content="Transform your startup idea into reality with our expert MVP development services. Get your web app built and launched in just 2-4 weeks."
                 />
-                <link rel="canonical" href="https://launchable.studio" />
+                <link rel="canonical" href="https://alicantorun.com" />
                 <meta
                     property="og:title"
                     content="Bolt ⚡ Studio | Rapid MVP Development for Startups"
@@ -1053,9 +1053,9 @@ export default function Home() {
                 />
                 <meta
                     property="og:image"
-                    content="https://launchable.studio/og-image.jpg"
+                    content="https://alicantorun.com/og-image.jpg"
                 />
-                <meta property="og:url" content="https://launchable.studio" />
+                <meta property="og:url" content="https://alicantorun.com" />
                 <meta name="twitter:card" content="summary_large_image" />
             </Head>
             <Header />
