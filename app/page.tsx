@@ -875,19 +875,19 @@ const FounderProfile = () => {
         },
         {
             name: "Antler",
-            role: "Entrepreneur in Residence",
+            role: "EIR",
             logo: "/antler-logo.svg",
             website: "https://www.antler.co",
         },
         {
             name: "Parloa",
-            role: "Frontend Developer",
+            role: "Frontend Dev",
             logo: "/parloa-logo.svg",
             website: "https://www.parloa.com",
         },
         {
             name: "cirplus",
-            role: "Full Stack Developer",
+            role: "Full Stack Dev",
             logo: "/cirplus-logo.svg",
             website: "https://www.cirplus.com",
         },
@@ -902,24 +902,23 @@ const FounderProfile = () => {
 
     const founderAdvantages = [
         {
-            title: "Startup Experience",
-            description:
-                "Built and scaled startups, understanding your challenges.",
+            title: "Startup Savvy",
+            description: "Built & scaled startups",
             icon: Rocket,
         },
         {
             title: "Investor Insights",
-            description: "VC background to shape investor-attractive MVPs.",
+            description: "VC-backed perspective",
             icon: TrendingUp,
         },
         {
             title: "Rapid Iteration",
-            description: "Move fast and adapt quickly to market feedback.",
+            description: "Fast market adaptation",
             icon: RefreshCw,
         },
         {
             title: "Growth-Focused",
-            description: "Advise on strategies to acquire first users.",
+            description: "User acquisition strategies",
             icon: Users,
         },
     ];
@@ -959,10 +958,9 @@ const FounderProfile = () => {
                 {/* Experiences Column */}
                 <div className="lg:col-span-2 space-y-6">
                     <p className="text-gray-600 mb-6">
-                        Experienced Full Stack Developer with 6 years of
-                        expertise in TypeScript/JavaScript. Specializes in
-                        building responsive and dynamic web and mobile
-                        applications.
+                        Full Stack Developer with 6+ years in
+                        TypeScript/JavaScript. Expert in responsive web and
+                        mobile apps.
                     </p>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         {experiences.map((exp, index) => (
@@ -988,11 +986,8 @@ const FounderProfile = () => {
                         ))}
                     </div>
                     <p className="text-gray-600 mt-6">
-                        Alican brings a wealth of experience in developing
-                        sophisticated web applications, managing projects, and
-                        driving technological innovations. His expertise spans
-                        across various technologies including React.js, Node.js,
-                        and cloud platforms like GCP and AWS.
+                        Expertise: React.js, Node.js, GCP, AWS. Proven track
+                        record in web app development and project management.
                     </p>
                 </div>
 
@@ -1001,13 +996,12 @@ const FounderProfile = () => {
                     <Card>
                         <CardHeader>
                             <CardTitle className="text-lg font-semibold">
-                                Founder's Advantage
+                                Founder's Edge
                             </CardTitle>
                         </CardHeader>
                         <CardContent className="space-y-3">
                             <p className="text-sm text-gray-600">
-                                Founders building for founders. Leveraging our
-                                startup experience.
+                                Founders building for founders.
                             </p>
                             {founderAdvantages.map((advantage, index) => (
                                 <div
