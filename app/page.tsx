@@ -35,6 +35,9 @@ import {
     Briefcase,
     Award,
     TrendingUp,
+    ClockIcon,
+    ScaleIcon,
+    UsersIcon,
 } from "lucide-react";
 import { WhenWorkWithUs } from "@/components/when-work-with-us";
 import {
@@ -77,7 +80,8 @@ const Hero2 = () => (
                 </Lead>
                 <div className="flex flex-col sm:flex-row justify-center gap-4">
                     <CTACalendarButton>
-                        <span>Schedule Free Consultation</span>
+                        <span>Schedule A Free Consultation</span>
+
                         <Icon name="ArrowRight" className="w-5 h-5" />
                     </CTACalendarButton>
                 </div>
@@ -540,18 +544,30 @@ const PainPoints = () => (
                 <div className="md:w-1/2">
                     <SectionTitle>Common Startup Struggles</SectionTitle>
                     <SectionSubtitle>
-                        Founders often face these challenges when building their
+                        We solve these challenges for founders building their
                         MVP:
                     </SectionSubtitle>
-                    <ul className="list-disc list-inside space-y-2 mb-6">
-                        <li>Delayed launches due to development issues</li>
-                        <li>Overspending on features that aren't essential</li>
-                        <li>Difficulty in finding reliable tech partners</li>
-                        <li>Struggling to balance quality and speed</li>
-                    </ul>
+                    <div className="grid grid-cols-2 gap-4 mb-6">
+                        <div className="flex items-center">
+                            <ClockIcon className="w-6 h-6 mr-2 text-red-500" />
+                            <span>Delayed Launches</span>
+                        </div>
+                        <div className="flex items-center">
+                            <DollarSign className="w-6 h-6 mr-2 text-yellow-500" />
+                            <span>Overspending</span>
+                        </div>
+                        <div className="flex items-center">
+                            <UsersIcon className="w-6 h-6 mr-2 text-blue-500" />
+                            <span>Hiring Challenges</span>
+                        </div>
+                        <div className="flex items-center">
+                            <ScaleIcon className="w-6 h-6 mr-2 text-green-500" />
+                            <span>Quality vs Speed</span>
+                        </div>
+                    </div>
                     <p className="text-lg">
-                        At Bolt ⚡ Studio, we solve these problems by delivering
-                        your MVP quickly and efficiently.
+                        Bolt ⚡ Studio delivers your MVP quickly and
+                        efficiently.
                     </p>
                     <CTACalendarButton size="lg" className="mt-6">
                         Solve Your MVP Challenges
@@ -875,7 +891,7 @@ const FounderProfile = () => {
         },
         {
             name: "Antler",
-            role: "EIR",
+            role: "Entrepreneur in Residence",
             logo: "/antler-logo.svg",
             website: "https://www.antler.co",
         },
@@ -936,7 +952,7 @@ const FounderProfile = () => {
                         alt="Alican Torun"
                         width={200}
                         height={200}
-                        className="rounded-full w-48 h-48 border shadow-xl mb-6"
+                        className="rounded-full w-48 h-48 border shadow-xl mb-6 object-cover"
                     />
                     <h3 className="text-2xl font-semibold mb-4">
                         Alican Torun
